@@ -1,4 +1,7 @@
-
+import Login from './components/Login';
+import Nav from './components/Nav';
+import Signup from './components/Signup';
+import Homepage from './pages/Homepage';
 import './App.css';
 
 function App() {
