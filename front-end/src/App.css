@@ -28,3 +28,25 @@ html{
 .nav-link:hover {
   color: green;
 }
+.form-container {
+  background-color: rgb(151, 15, 230);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 260px; 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container input[type="password"],
+.form-container input[type="submit"] {
+  background-color: white;
+  padding: 5px;
+}
+.form-container input[type="submit"] {
+  cursor: pointer;
+}
