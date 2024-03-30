@@ -16,9 +16,9 @@ const Nav = (props) => {
   )
 
   return (
-    <nav>
+    <nav  className="navbar">
       <div>
-        <Link to="/">Home</Link>
+        <Link className="nav-link" to="/">Home</Link>
       </div>
       <div>
         {props.isLoggedIn ? loggedInLink : noAuthLinks}
