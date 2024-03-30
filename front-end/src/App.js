@@ -4,8 +4,11 @@ import Nav from './components/Nav';
 import Signup from './components/Signup';
 import Homepage from './pages/Homepage';
 import Profile from './pages/Profile';
-import { useEffect, useState } from 'react';
+import CreateArtist from './pages/FavoriteArtistForm';
+import { useEffect, useState, createContext } from 'react';
 import './App.css';
+
+export const ArtistContext = createContext(null)
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -79,17 +82,65 @@ function App() {
     }
   }, [])
 
+  // Below is the CRUD artist code
+  const [artists, setArtists] = useState(null)
+    
+  const getArtist = async () => {
+      const response = await fetch(URL);
+      const data = await response.json();
+      setArtists(data.data);
+  }
+
+  const createArtist = async (artist) => {
+      await fetch(URL, {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+          },
+          body: JSON.stringify(artist),
+      })
+      getArtist()
+  }
+
+  const updateArtist = async (artist, id) => {
+      await fetch(URL + id, {
+          method: "PUT",
+          headers: {
+              "Content-Type": "application/json",
+          },
+          body: JSON.stringify(artist),
+      });
+      getArtist();
+  }
+
+  const deleteArtist = async (id) => {
+      await fetch(URL + id, {
+          method: "DELETE",
+      });
+      getArtist();
+  }
+
+  useEffect(() => {
+      getArtist();
+  }, []);
+
 
   return (
     <div className="App">
+      <ArtistContext.Provider value={{artists}}>
+
       <Nav isLoggedIn={isLoggedIn} handleLogout={handleLogout}/>
+      
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<Login handleLogin={handleLogin} />} />
         <Route path="/signup" element={<Signup
         handleSignUp={handleSignUp} />} />
         <Route path="/profile/:id" element={<Profile fetchUser={fetchUser} user={user}/>}/>
+        <Route path="/createArtist" element={<CreateArtist createArtist={createArtist} />} />
       </Routes>
+
+      </ArtistContext.Provider>
     </div>
   );
 }
