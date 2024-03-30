@@ -8,7 +8,8 @@ const Nav = (props) => {
     <div>
       <button onClick={props.handleLogout} className="logout-button">Logout</button>
       <button onClick={props.handleFavoriteArtist} className="nav-button">Favorite Artist</button>
-      <Link to="/search" className="nav-link">Search</Link>
+      <button onClick={props.handleCreateArtist} className="nav-button">Create Artist</button>
+      <Link to="/searchAlbum" className="nav-link">Search Album</Link>
     </div>
   )
 
