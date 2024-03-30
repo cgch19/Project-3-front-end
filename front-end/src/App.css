@@ -1,5 +1,5 @@
 html{
-  /* background-image: url('./assets/musix.jpeg') ; */
+  background-image: url('./assets/musix.jpeg') ;
   background-size: cover;
   height: 100%;
   overflow: hidden;
@@ -10,9 +10,21 @@ html{
 }
 
 .navbar {
-  background-color: rgba(0, 0, 0, .6);
+  background-color: rgb(234, 10, 159);
   height: 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.homepage-heading {
+  color: white;
+}
+
+.nav-link{
+  text-decoration: none;
+  color: black;
+  margin-right: 20px;
+}
+.nav-link:hover {
+  color: green;
 }
