@@ -1,23 +1,19 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom";
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 
 const Nav = (props) => {
+  const navigate = useNavigate();
+
+  const handleCreateArtist = () => {
+    navigate("/create-artist");
+  };
 
   const loggedInLink = (
     <div>
       <button onClick={props.handleLogout} className="logout-button">Logout</button>
-      <button onClick={props.handleFavoriteArtist} className="nav-button">Favorite Artist</button>
-      <button onClick={props.handleCreateArtist} className="nav-button">Create Artist</button>
+      <button onClick={handleCreateArtist} className="nav-button">Create Artist</button>
       <Link to="/searchAlbum" className="nav-link">Search Album</Link>
-    </div>
-  )
-
-
-  const noAuthLinks = (
-    <div>
-    <Link to="/login" className="nav-link">Login</Link>
-    <Link to="/signup" className="nav-link">Sign Up</Link>
     </div>
   )
 
@@ -55,7 +51,8 @@ const Nav = (props) => {
   )
 }
 
-export default Nav
+export default Nav;
+
 
 // const Nav = () => {
 //     console.log("Nav component is rendered");
