@@ -138,13 +138,10 @@ function App() {
         <Route path="/signup" element={<Signup handleSignUp={handleSignUp} />} />
         <Route path="/profile/:id" element={<Profile fetchUser={fetchUser} user={user}/>}/>
         <Route path="/createArtist" element={<CreateArtist createArtist={createArtist} />} />
-
+        <Route path="/searchAlbum" element={<Album />} />
         <Route path="/album" element={<Album />} />
-=======
         <Route path="/create-artist" element={<CreateArtist createArtist={createArtist} />} />
-
       </Routes>
-
       </ArtistContext.Provider>
     </div>
   );

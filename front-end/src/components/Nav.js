@@ -9,11 +9,15 @@ const Nav = (props) => {
     navigate("/create-artist");
   };
 
+  const handleSearchAlbum = () => {
+    navigate("/Album")
+  }
+
   const loggedInLink = (
     <div className="popup">
-      <button onClick={props.handleLogout} className="logout-button">Logout</button>
+      <button onClick={props.handleLogout} className="nav-button">Logout</button>
       <button onClick={handleCreateArtist} className="nav-button">Create Artist</button>
-      <Link to="/searchAlbum" className="nav-link">Search Album</Link>
+      <button onClick={handleSearchAlbum} className="nav-button">Search Album</button>
     </div>
   )
 

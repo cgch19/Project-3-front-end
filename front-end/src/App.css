@@ -51,14 +51,6 @@ html{
 .form-container input[type="submit"] {
   cursor: pointer;
 }
-.logout-button {
-  background-color: black;
-  color: white;
-  padding: 5px 10px;
-  cursor: pointer;
-  border-radius: 10px;
-  margin-right: 10px;
-}
 .artist {
   color: white;
 }
@@ -91,4 +83,36 @@ html{
 }
 .popup-button:hover {
   background-color: #0056b3;
+}
+
+.nav-button {
+  background-color: rgb(234, 10, 159); 
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+.nav-button:hover {
+  background-color: purple; 
+}
+.popup-button {
+  background-color: #f43669; 
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.popup-button:hover {
+  background-color: purple;
 }
