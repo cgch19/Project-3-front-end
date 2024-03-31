@@ -12,28 +12,29 @@ const FavoriteArtistForm = (props) => {
         photo: "",
     }
 
-    const [form, setForm] = useState(newArtistForm);
+const [form, setForm] = useState(newArtistForm);
 
-    const { Input, Field, Label } = Form;
+const { Input, Field, Label } = Form;
 
-    const handleChange = (index) => {
-        setForm({...form, [index.target.name]: index.target.value})
-    }
+const handleChange = (index) => {
+    setForm({...form, [index.target.name]: index.target.value})
+}
 
-    const handleSubmit = (index) => {
-        index.preventDefault();
-        props.createArtist(form);
-        setForm(newArtistForm);
-    };
+const handleSubmit = (index) => {
+    index.preventDefault();
+    props.createArtist(form);
+    setForm(newArtistForm);
+};
 
 
-    return (
-        <section>
+return (
+    <div className="container">
+        <section className="form-section">
             <Box className="form-box">
-                <h2 className='is-size-3 has-font-weight-bold'>Add a Favorite Artist</h2>
+            <h2 className="artist">Add Favorite Artist</h2>
                 <form onSubmit={handleSubmit}>
                     <Field>
-                        <Label>Song</Label>
+                        <Label>Song:</Label>
                         <Input
                             type="text"
                             name="song"
@@ -42,7 +43,7 @@ const FavoriteArtistForm = (props) => {
                         />
                     </Field>
                     <Field>
-                        <Label>Artist</Label>
+                        <Label>Artist:</Label>
                         <Input
                             type="text"
                             name="artist"
@@ -51,7 +52,7 @@ const FavoriteArtistForm = (props) => {
                         />
                     </Field>
                     <Field>
-                        <Label>Title</Label>
+                        <Label>Title:</Label>
                         <Input
                             type="text"
                             name="title"
@@ -60,16 +61,16 @@ const FavoriteArtistForm = (props) => {
                         />
                     </Field>
                     <Field>
-                        <Label>Release Date</Label>
+                    <Label>Release Date:</Label>
                         <Input
                             type="text"
                             name="releaseDate"
                             value={form.releaseDate}
                             onChange={handleChange}
-                        />
+                            />
                     </Field>
                     <Field>
-                        <Label>Genre</Label>
+                        <Label>Genre:</Label>
                         <Input
                             type="text"
                             name="genre"
@@ -78,7 +79,7 @@ const FavoriteArtistForm = (props) => {
                         />
                     </Field>
                     <Field>
-                        <Label>Album</Label>
+                        <Label>Album:</Label>
                         <Input
                             type="text"
                             name="album"
@@ -87,7 +88,7 @@ const FavoriteArtistForm = (props) => {
                         />
                     </Field>
                     <Field>
-                        <Label>Photo</Label>
+                        <Label>Photo:</Label>
                         <Input
                             type="text"
                             name="photo"
@@ -99,6 +100,7 @@ const FavoriteArtistForm = (props) => {
                 </form>
             </Box>
         </section>
+    </div>
     )
 
 }

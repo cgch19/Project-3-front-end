@@ -59,3 +59,16 @@ html{
   border-radius: 10px;
   margin-right: 10px;
 }
+.artist {
+  color: white;
+}
+.form-section {
+  background-color: rgb(151, 15, 230);
+  padding: 50px;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
