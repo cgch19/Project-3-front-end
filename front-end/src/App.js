@@ -5,6 +5,7 @@ import Signup from './components/Signup';
 import Homepage from './pages/Homepage';
 import Profile from './pages/Profile';
 import CreateArtist from './pages/FavoriteArtistForm';
+import Album from './pages/Album';
 import { useEffect, useState, createContext } from 'react';
 import './App.css';
 
@@ -130,14 +131,15 @@ function App() {
       <ArtistContext.Provider value={{artists}}>
 
       <Nav isLoggedIn={isLoggedIn} handleLogout={handleLogout}/>
-      
+
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<Login handleLogin={handleLogin} />} />
-        <Route path="/signup" element={<Signup
-        handleSignUp={handleSignUp} />} />
+        <Route path="/signup" element={<Signup handleSignUp={handleSignUp} />} />
         <Route path="/profile/:id" element={<Profile fetchUser={fetchUser} user={user}/>}/>
         <Route path="/createArtist" element={<CreateArtist createArtist={createArtist} />} />
+
+        <Route path="/album" element={<Album />} />
       </Routes>
 
       </ArtistContext.Provider>

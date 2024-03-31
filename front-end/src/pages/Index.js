@@ -8,7 +8,11 @@ import { ArtistContext } from "../App";
 
 //     const loaded = () => {
 //         return artists.map((artist, idx) => {
-//             return ()
+//             return (
+//                 <Content key={idx}>
+//                     <Heading>{artist.artist}</Heading>
+//                     <p>{artist.song}</p>
+//             )
 //         })
 //     }
 // }
