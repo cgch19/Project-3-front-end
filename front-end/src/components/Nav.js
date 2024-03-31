@@ -28,7 +28,7 @@ const Nav = (props) => {
   return (
     <nav className="navbar">
       <div>
-        <Link className="nav-link" to="/">Home</Link>
+        <Link className="nav-button" to="/">Home</Link>
       </div>
       <div>
         {props.isLoggedIn ? (
@@ -55,8 +55,8 @@ const Nav = (props) => {
           </Popup>
         ) : (
           <div>
-            <Link to="/login" className="nav-link">Login</Link>
-            <Link to="/signup" className="nav-link">Sign Up</Link>
+            <Link to="/login" className="nav-button">Login</Link>
+            <Link to="/signup" className="nav-button">Sign Up</Link>
           </div>
         )}
       </div>

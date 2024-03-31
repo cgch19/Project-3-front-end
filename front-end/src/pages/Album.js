@@ -47,9 +47,9 @@ const Albums = () => {
 
     return (
         <div className="container">
-            <div className="field has-addons mb-4">
+            <div className="search-container">
                 <div className="control is-expanded">
-                    <input className="input" type="text" placeholder="Search For Artist"
+                    <input className="input search-input" type="text" placeholder="Search For Artist"
                         onKeyPress={event => {
                             if (event.key === 'Enter') {
                                 search();
@@ -59,7 +59,7 @@ const Albums = () => {
                     />
                 </div>
                 <div className="control">
-                    <button className="button is-info" onClick={search}>
+                    <button className="nav-button" onClick={search}>
                         Search
                     </button>
                 </div>
