@@ -19,6 +19,10 @@ return (
     <div className="form-container">
       <h2>Log In</h2>
     <form onSubmit={handleSubmit}>
+    <span>
+        <label htmlFor="username">Username: </label>
+        <input type="text" name="username" onChange={handleChange}/>
+    </span>
     <span>                
         <label htmlFor="email">Email: </label>
         <input type="email" name="email" onChange={handleChange}/>

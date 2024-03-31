@@ -140,6 +140,9 @@ function App() {
         <Route path="/createArtist" element={<CreateArtist createArtist={createArtist} />} />
 
         <Route path="/album" element={<Album />} />
+=======
+        <Route path="/create-artist" element={<CreateArtist createArtist={createArtist} />} />
+
       </Routes>
 
       </ArtistContext.Provider>

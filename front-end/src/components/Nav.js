@@ -1,33 +1,58 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom";
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 const Nav = (props) => {
-  
+  const navigate = useNavigate();
+
+  const handleCreateArtist = () => {
+    navigate("/create-artist");
+  };
+
   const loggedInLink = (
     <div>
-      <button onClick={props.handleLogout}>Logout</button>
-    </div>
-  )
-
-  const noAuthLinks = (
-    <div>
-    <Link to="/login" className="nav-link">Login</Link>
-    <Link to="/signup" className="nav-link">Sign Up</Link>
+      <button onClick={props.handleLogout} className="logout-button">Logout</button>
+      <button onClick={handleCreateArtist} className="nav-button">Create Artist</button>
+      <Link to="/searchAlbum" className="nav-link">Search Album</Link>
     </div>
   )
 
   return (
-    <nav  className="navbar">
+    <nav className="navbar">
       <div>
         <Link className="nav-link" to="/">Home</Link>
       </div>
       <div>
-        {props.isLoggedIn ? loggedInLink : noAuthLinks}
+        {props.isLoggedIn ? (
+          <Popup
+            trigger={<button className="nav-button">Menu</button>}
+            modal
+            nested
+          >
+            {close => (
+              <div className='modal'>
+                <div className='content'>
+                  {loggedInLink}
+                </div>
+                <div>
+                  <button onClick={close}>Close Menu</button>
+                </div>
+              </div>
+            )}
+          </Popup>
+        ) : (
+          <div>
+            <Link to="/login" className="nav-link">Login</Link>
+            <Link to="/signup" className="nav-link">Sign Up</Link>
+          </div>
+        )}
       </div>
     </nav>
   )
 }
 
-export default Nav
+export default Nav;
+
 
 // const Nav = () => {
 //     console.log("Nav component is rendered");
