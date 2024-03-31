@@ -1,16 +1,20 @@
 import { Link, useNavigate } from "react-router-dom";
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+import React, { useState } from 'react';
 
 const Nav = (props) => {
   const navigate = useNavigate();
+  const [popupOpen, setPopupOpen] = useState(false); 
 
   const handleCreateArtist = () => {
     navigate("/create-artist");
-  };
+    setPopupOpen(false);
+  }
 
   const handleSearchAlbum = () => {
-    navigate("/Album")
+    navigate("/Album");
+    setPopupOpen(false);
   }
 
   const loggedInLink = (
@@ -29,9 +33,14 @@ const Nav = (props) => {
       <div>
         {props.isLoggedIn ? (
           <Popup
-            trigger={<button className="nav-button">Menu</button>}
+            trigger={<button className="nav-button" onClick={() => setPopupOpen(!popupOpen)}>Menu</button>}
             modal
             nested
+            open={popupOpen}
+            onClose={() => {
+              console.log("Closing popup...");
+              setPopupOpen(false);
+            }} 
           >
             {close => (
               <div className='modal'>
@@ -39,7 +48,7 @@ const Nav = (props) => {
                   {loggedInLink}
                 </div>
                 <div>
-                  <button onClick={close} className="popup-button">Close Menu</button>
+                <button onClick={() => {close(); setPopupOpen(false);}} className="popup-button">Close Menu</button>
                 </div>
               </div>
             )}
