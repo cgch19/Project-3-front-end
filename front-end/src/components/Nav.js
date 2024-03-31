@@ -10,7 +10,7 @@ const Nav = (props) => {
   };
 
   const loggedInLink = (
-    <div>
+    <div className="popup">
       <button onClick={props.handleLogout} className="logout-button">Logout</button>
       <button onClick={handleCreateArtist} className="nav-button">Create Artist</button>
       <Link to="/searchAlbum" className="nav-link">Search Album</Link>
@@ -35,7 +35,7 @@ const Nav = (props) => {
                   {loggedInLink}
                 </div>
                 <div>
-                  <button onClick={close}>Close Menu</button>
+                  <button onClick={close} className="popup-button">Close Menu</button>
                 </div>
               </div>
             )}

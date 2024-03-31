@@ -30,10 +30,10 @@ const handleSubmit = (index) => {
 return (
     <div className="container">
         <section className="form-section">
-            <Box className="form-box">
+            <Box >
             <h2 className="artist">Add Favorite Artist</h2>
-                <form onSubmit={handleSubmit}>
-                    <Field>
+                <form className="style-up" onSubmit={handleSubmit}>
+                    <Field class="mb-4">
                         <Label>Song:</Label>
                         <Input
                             type="text"
