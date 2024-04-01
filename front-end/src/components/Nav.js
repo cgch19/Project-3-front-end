@@ -2,6 +2,8 @@ import { Link, useNavigate } from "react-router-dom";
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import React, { useState } from 'react';
+import { Button } from "react-bulma-components"
+
 
 const Nav = (props) => {
   const navigate = useNavigate();
@@ -19,9 +21,9 @@ const Nav = (props) => {
 
   const loggedInLink = (
     <div className="popup">
-      <button onClick={props.handleLogout} className="nav-button">Logout</button>
-      <button onClick={handleCreateArtist} className="nav-button">Create Artist</button>
-      <button onClick={handleSearchAlbum} className="nav-button">Search Album</button>
+      <button onClick={() => { handleSearchAlbum(); setPopupOpen(false); }} className="nav-button">Search Album🔍</button>
+      <button onClick={() => { handleCreateArtist(); setPopupOpen(false); }} className="nav-button">Create Artist</button>
+      <button  onClick={props.handleLogout} className="nav-button">Logout</button>
     </div>
   )
 
@@ -48,7 +50,7 @@ const Nav = (props) => {
                   {loggedInLink}
                 </div>
                 <div>
-                <button onClick={() => {close(); setPopupOpen(false);}} className="popup-button">Close Menu</button>
+                <Button onClick={() => {close(); setPopupOpen(false);}} className="close-menu">Close Menu</Button>
                 </div>
               </div>
             )}

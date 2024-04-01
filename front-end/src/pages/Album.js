@@ -59,7 +59,7 @@ const Albums = () => {
                     />
                 </div>
                 <div className="control">
-                    <button className="nav-button" onClick={search}>
+                    <button className="popup-button" onClick={search}>
                         Search
                     </button>
                 </div>

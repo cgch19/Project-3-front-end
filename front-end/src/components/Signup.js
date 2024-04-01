@@ -1,4 +1,6 @@
 import { useState } from "react"
+import { Button } from "react-bulma-components"
+
 
 const Signup = (props) => {
     const [form, setForm] = useState(null)
@@ -13,21 +15,23 @@ const Signup = (props) => {
 
   return (
     <div className="form-container">
-        <h1>Register</h1>
+        <div className="login-heading">
+        <h1>Sign Up</h1>
+        </div>
         <form onSubmit={handleSubmit}>
-            <span>
-                <label htmlFor="username">Username:</label>
-                <input type="text" name="username" onChange={handleChange}/>
-            </span>
-            <span>
-            <label htmlFor="email">Email:</label>
-                <input type="email" name="email" onChange={handleChange}/>
-            </span>
-            <span>
-                <label htmlFor="password">Password:</label>
-                <input type="password" name="password" autoCompletet="true" onChange={handleChange}/>
-            </span>
-            <input type="submit" value="Sign Up"/>
+            <div>
+                <label htmlFor="username"/>
+                <input type="text" name="username" placeholder="Username" onChange={handleChange}/>
+            </div>
+            <div>
+                <label htmlFor="email"/>
+                <input type="email" name="email" placeholder="Email" onChange={handleChange}/>
+            </div>
+            <div>
+                <label htmlFor="password"/>
+                <input type="password" name="password" autoCompletet="true" placeholder="Password" onChange={handleChange}/>
+            </div>
+            <Button type="submit" className="popup-button" value="Login">Submit</Button>
         </form>
     </div>
   )

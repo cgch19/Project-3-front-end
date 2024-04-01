@@ -34,69 +34,69 @@ return (
             <h2 className="artist">Add Favorite Artist</h2>
                 <form className="style-up" onSubmit={handleSubmit}>
                     <Field class="mb-4">
-                        <Label>Song:</Label>
                         <Input
                             type="text"
                             name="song"
                             value={form.song}
                             onChange={handleChange}
+                            placeholder="Song"
                         />
                     </Field>
                     <Field>
-                        <Label>Artist:</Label>
                         <Input
                             type="text"
                             name="artist"
                             value={form.artist}
                             onChange={handleChange}
+                            placeholder="Artist"
                         />
                     </Field>
                     <Field>
-                        <Label>Title:</Label>
                         <Input
                             type="text"
                             name="title"
                             value={form.title}
                             onChange={handleChange}
+                            placeholder="Title"
                         />
                     </Field>
                     <Field>
-                    <Label>Release Date:</Label>
                         <Input
                             type="text"
                             name="releaseDate"
                             value={form.releaseDate}
                             onChange={handleChange}
+                            placeholder="Release Date"
                             />
                     </Field>
                     <Field>
-                        <Label>Genre:</Label>
                         <Input
                             type="text"
                             name="genre"
                             value={form.genre}
                             onChange={handleChange}
+                            placeholder="Genre"
                         />
                     </Field>
                     <Field>
-                        <Label>Album:</Label>
                         <Input
                             type="text"
                             name="album"
                             value={form.album}
                             onChange={handleChange}
+                            placeholder="Album"
                         />
                     </Field>
                     <Field>
-                        <Label>Photo:</Label>
                         <Input
                             type="text"
                             name="photo"
                             value={form.photo}
                             onChange={handleChange}
+                            placeholder="Photo"
                         />
                     </Field>
-                    <Button type="submit">Submit</Button>
+                    <Button className="popup-button" type="submit">Submit</Button>
                 </form>
             </Box>
         </section>
