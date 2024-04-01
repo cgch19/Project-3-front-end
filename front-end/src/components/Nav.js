@@ -20,11 +20,11 @@ const Nav = (props) => {
   }
 
   const loggedInLink = (
-    <div className="popup">
+    <span className="popup">
       <button onClick={() => { handleSearchAlbum(); setPopupOpen(false); }} className="nav-button">Search Album🔍</button>
       <button onClick={() => { handleCreateArtist(); setPopupOpen(false); }} className="nav-button">Create Artist</button>
       <button  onClick={props.handleLogout} className="nav-button">Logout</button>
-    </div>
+    </span>
   )
 
   return (

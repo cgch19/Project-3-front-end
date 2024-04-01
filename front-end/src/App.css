@@ -1,5 +1,5 @@
 html{
-  background-image: url('./assets/musix.jpeg') ;
+  background-image: url('./assets/new.webp') ;
   background-size: cover;
   height: 100%;
   overflow: hidden;
@@ -17,7 +17,7 @@ html{
   align-items: center;
 }
 .homepage-heading h1 {
-  font-size: 50px; 
+  font-size: 55px; 
   color: whitesmoke;
   font-family: "BatFont", cursive;
 }
@@ -62,7 +62,7 @@ html{
 
 }
 .popup {
-  background-color: #ffffff;
+  background-color: gold;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
   padding: 20px;
