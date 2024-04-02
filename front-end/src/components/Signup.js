@@ -29,7 +29,7 @@ const Signup = (props) => {
             </div>
             <div>
                 <label htmlFor="password"/>
-                <input type="password" name="password" autoCompletet="true" placeholder="Password" onChange={handleChange}/>
+                <input type="password" name="password" autoComplete="true" placeholder="Password" onChange={handleChange}/>
             </div>
             <Button type="submit" className="popup-button" value="Login">Submit</Button>
         </form>
