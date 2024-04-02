@@ -1,4 +1,4 @@
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate, useParams } from 'react-router-dom';
 import Login from './components/Login';
 import Nav from './components/Nav';
 import Signup from './components/Signup';
@@ -14,6 +14,7 @@ import './App.css';
 export const ArtistContext = createContext(null)
 
 function App() {
+  // below this line, it's the login and signup functions
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const navigate = useNavigate()
   const URL = "http://localhost:4000/api/"
@@ -85,43 +86,87 @@ function App() {
     }
   }, [])
 
-  // Below is the CRUD artist code
+  // Below this line, it's the CRUD operations for the favorite artists
   const [artists, setArtists] = useState(null)
     
   const getArtist = async () => {
-      const response = await fetch(URL);
-      const data = await response.json();
-      setArtists(data.data);
-  }
+    if (!isLoggedIn) {
+        console.log("User is not logged in. Cannot fetch artists.");
+        return;
+    }
+    const response = await fetch(`${URL}favoriteArtist`, {
+      headers: {
+        "Authorization": `Bearer ${localStorage.getItem("authToken")}`
+      }
+    });
+    const data = await response.json();
+    setArtists(data.data);
+    console.log("Artists fetched successfully.");
+}
 
-  const createArtist = async (artist) => {
-      await fetch(URL, {
-          method: "POST",
-          headers: {
-              "Content-Type": "application/json",
-          },
-          body: JSON.stringify(artist),
-      })
-      getArtist()
-  }
+const createArtist = async (artist) => {
+    if (!isLoggedIn) {
+        console.log("User is not logged in. Cannot create artist.");
+        return;
+    }
+    await fetch(`${URL}favoriteArtist`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("authToken")}`
+        },
+        body: JSON.stringify(artist),
+    }).then((response) => {
+        if (response.ok) {
+            console.log("Artist created successfully.");
+        } else {
+            console.log("Failed to create artist.");
+        }
+    });
+    getArtist();
+}
 
-  const updateArtist = async (artist, id) => {
-      await fetch(URL + id, {
-          method: "PUT",
-          headers: {
-              "Content-Type": "application/json",
-          },
-          body: JSON.stringify(artist),
-      });
-      getArtist();
-  }
+const updateArtist = async (artist, id) => {
+    if (!isLoggedIn) {
+        console.log("User is not logged in. Cannot update artist.");
+        return;
+    }
+    await fetch(`${URL}favoriteArtist/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("authToken")}`
+        },
+        body: JSON.stringify(artist),
+    }).then((response) => {
+        if (response.ok) {
+            console.log("Artist updated successfully.");
+        } else {
+            console.log("Failed to update artist.");
+        }
+    });
+    getArtist();
+}
 
-  const deleteArtist = async (id) => {
-      await fetch(URL + id, {
-          method: "DELETE",
-      });
-      getArtist();
-  }
+const deleteArtist = async (id) => {
+    if (!isLoggedIn) {
+        console.log("User is not logged in. Cannot delete artist.");
+        return;
+    }
+    await fetch(`${URL}favoriteArtist/${id}`, {
+        method: "DELETE",
+        headers: {
+            "Authorization": `Bearer ${localStorage.getItem("authToken")}`
+        },
+    }).then((response) => {
+        if (response.ok) {
+            console.log("Artist deleted successfully.");
+        } else {
+            console.log("Failed to delete artist.");
+        }
+    });
+    getArtist();
+}
 
   useEffect(() => {
       getArtist();
@@ -130,7 +175,7 @@ function App() {
 
   return (
     <div className="App">
-      <ArtistContext.Provider value={{artists}}>
+      <ArtistContext.Provider value={{artists, createArtist, updateArtist, deleteArtist}}>
 
       <Nav isLoggedIn={isLoggedIn} handleLogout={handleLogout}/>
 
@@ -143,8 +188,7 @@ function App() {
         <Route path="/favoriteArtist" element={<Index />} />  
         <Route path="/favoriteArtist/:id" element={<Show artists={artists} updateArtist={updateArtist} deleteArtist={deleteArtist} />} />
         <Route path="/album" element={<Album />} />
-        {/* <Route path="/album" element={<Album />} />
-        <Route path="/create-artist" element={<CreateArtist createArtist={createArtist} />} /> */}
+
       </Routes>
       </ArtistContext.Provider>
     </div>

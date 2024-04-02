@@ -10,7 +10,15 @@ const Index = (props) => {
     const loaded = () => {
         return artists.map((artist, idx) => {
             return (
-                <Content key={idx}>
+                <Content 
+                key={idx}
+                display="flex"
+                flexDirection="row"
+                alignItems="baseline"
+                textColor="dark"
+                justifyContent="space-evenly"
+                className="has-background-grey-lighter"
+                >
                     <Heading>{artist.artist}</Heading>
                     <img src={artist.img} alt={artist.artist} />
                     <p>{artist.song}</p>
