@@ -150,12 +150,14 @@ html{
 
 .album {
   text-align: center;
+  background-color: purple;
 }
 
 .album-image {
   width: 100%;
   height: auto;
   border-radius: 5px;
+  
 }
 .search-container {
   display: flex;
@@ -165,5 +167,8 @@ html{
 
 .album .card-content .title {
   color: white; 
+}
+.css {
+  
 }
 
