@@ -160,9 +160,10 @@ html{
 .search-container {
   display: flex;
   align-items: center;
- 
+  justify-content: center;
 }
-.control {
-  margin-left: 10px; /* Adjust margin as needed */
+
+.album .card-content .title {
+  color: white; 
 }
 
