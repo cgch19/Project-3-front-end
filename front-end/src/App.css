@@ -139,3 +139,31 @@ html{
 .login-heading h1{
   font-family: "BatFont", cursive;
 }
+
+.albums-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  max-height: 500px; 
+  overflow-y: auto; 
+}
+
+.album {
+  text-align: center;
+}
+
+.album-image {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.album .card-content .title {
+  color: white; 
+}
+
