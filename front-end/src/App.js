@@ -10,6 +10,7 @@ import Show from './pages/Show';
 import Album from './pages/Album';
 import { useEffect, useState, createContext } from 'react';
 import './App.css';
+import Index from './pages/Index';
 
 export const ArtistContext = createContext(null);
 
@@ -93,6 +94,7 @@ function App() {
   }, []);
 
 
+
   // Below this line, it's the CRUD operations for the favorite artists
   const [artists, setArtists] = useState(null)
     
@@ -174,8 +176,10 @@ const deleteArtist = async (id) => {
     });
     getArtist();
 }
-=======
+
   // Below is the CRUD artist code
+
+
   const [artists, setArtists] = useState(null);
 
   const getArtist = async () => {
