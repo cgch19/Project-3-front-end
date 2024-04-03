@@ -65,13 +65,13 @@ const Albums = () => {
                 </div>
             </div>
 
-            <div className="columns is-multiline">
+            <div className="albums-container">
                 {albums.map((album, i) => (
-                    <div key={i} className="column is-one-quarter">
+                    <div key={i} className="album">
                         <div className="card">
                             <div className="card-image">
                                 <figure className="image is-4by3">
-                                    <img src={album.images[0]?.url} alt={album.name}/>
+                                    <img className="album-image" src={album.images[0]?.url} alt={album.name}/>
                                 </figure>
                             </div>
                             <div className="card-content">

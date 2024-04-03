@@ -10,20 +10,15 @@ import Show from './pages/Show';
 import Album from './pages/Album';
 import { useEffect, useState, createContext } from 'react';
 import './App.css';
-import Index from './pages/Index';
 
 export const ArtistContext = createContext(null);
 
 function App() {
 
   // below this line, it's the login and signup functions
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("authToken"))
   const navigate = useNavigate()
   const URL = "http://localhost:4000/api/"
-
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const navigate = useNavigate();
-  const URL = "http://localhost:4000/api/";
 
 
   const handleLogin = async (user) => {
@@ -94,7 +89,6 @@ function App() {
   }, []);
 
 
-
   // Below this line, it's the CRUD operations for the favorite artists
   const [artists, setArtists] = useState(null)
     
@@ -128,11 +122,13 @@ const createArtist = async (artist) => {
     }).then((response) => {
         if (response.ok) {
             console.log("Artist created successfully.");
+            getArtist()
+            
+
         } else {
             console.log("Failed to create artist.");
         }
     });
-    getArtist();
 }
 
 const updateArtist = async (artist, id) => {
@@ -177,51 +173,6 @@ const deleteArtist = async (id) => {
     getArtist();
 }
 
-  // Below is the CRUD artist code
-
-
-  const [artists, setArtists] = useState(null);
-
-  const getArtist = async () => {
-    const response = await fetch(URL);
-    const data = await response.json();
-    setArtists(data.data);
-  };
-
-  const createArtist = async (artist) => {
-    await fetch(URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(artist),
-    });
-    getArtist();
-  };
-
-  const updateArtist = async (artist, id) => {
-    await fetch(URL + id, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(artist),
-    });
-    getArtist();
-  };
-
-  const deleteArtist = async (id) => {
-    await fetch(URL + id, {
-      method: "DELETE",
-    });
-    getArtist();
-  };
-
-
-  useEffect(() => {
-    getArtist();
-  }, []);
-
   return (
     <div className="App">
 
@@ -241,23 +192,10 @@ const deleteArtist = async (id) => {
 
       </Routes>
 
-      <ArtistContext.Provider value={{ artists }}>
-
-        <Nav isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
-
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/login" element={<Login handleLogin={handleLogin} />} />
-          <Route path="/signup" element={<Signup handleSignUp={handleSignUp} />} />
-          <Route path="/profile/:id" element={<Profile fetchUser={fetchUser} user={user} />} />
-          <Route path="/createArtist" element={<CreateArtist createArtist={createArtist} />} />
-          <Route path="/searchAlbum" element={<Album />} />
-          <Route path="/album" element={<Album />} />
-          <Route path="/create-artist" element={<CreateArtist createArtist={createArtist} />} />
-        </Routes>
       </ArtistContext.Provider>
     </div>
   );
 }
+
 
 export default App;

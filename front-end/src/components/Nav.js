@@ -18,10 +18,15 @@ const Nav = (props) => {
     navigate("/Album");
     setPopupOpen(false);
   }
+  const handleFavoriteArtist = () => {
+    navigate("/favoriteartist");
+    setPopupOpen(false);
+  }
 
   const loggedInLink = (
     <span className="popup">
       <button onClick={() => { handleSearchAlbum(); setPopupOpen(false); }} className="nav-button">Search Album🔍</button>
+      <button onClick={() => { handleFavoriteArtist(); setPopupOpen(false); }} className="nav-button">Favorite Artists</button>
       <button onClick={() => { handleCreateArtist(); setPopupOpen(false); }} className="nav-button">Create Artist</button>
       <button  onClick={props.handleLogout} className="nav-button">Logout</button>
     </span>
