@@ -33,7 +33,7 @@ return (
             <Box >
             <h2 className="artist">Add Favorite Artist</h2>
                 <form className="style-up" onSubmit={handleSubmit}>
-                    <Field class="mb-4">
+                    <Field >
                         <Input
                             type="text"
                             name="song"
