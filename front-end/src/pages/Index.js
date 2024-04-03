@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
+
 import { Content, Button, Heading } from "react-bulma-components";
 import { Link } from "react-router-dom";
-// import { useContext } from "react";
-// import { ArtistContext } from "../App";
+import { useContext } from "react";
+import { ArtistContext } from "../App";
 
 
 
