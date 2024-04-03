@@ -26,7 +26,7 @@ const Index = (props) => {
 //
 
     const loaded = () => {
-        return artists.map((artist, idx) => {
+        return artists.artists.map((artist, idx) => {
             return (
                 <Content 
                 key={idx}
@@ -54,7 +54,7 @@ const Index = (props) => {
         return <h1>Loading . . .</h1>
     }
 
-    return (artists && artists.length > 0 ? loaded() : loading())
+    return (artists && artists.artists.length > 0 ? loaded() : loading())
 }
 
 export default Index;

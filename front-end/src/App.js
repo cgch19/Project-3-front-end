@@ -14,9 +14,11 @@ import './App.css';
 export const ArtistContext = createContext(null);
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const navigate = useNavigate();
-  const URL = "http://localhost:4000/api/";
+
+  // below this line, it's the login and signup functions
+  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("authToken"))
+  const navigate = useNavigate()
+  const URL = "http://localhost:4000/api/"
 
   const handleLogin = async (user) => {
     try {
@@ -134,6 +136,19 @@ function App() {
           "Authorization": `Bearer ${localStorage.getItem("authToken")}`
         },
         body: JSON.stringify(artist),
+
+    }).then((response) => {
+        if (response.ok) {
+            console.log("Artist created successfully.");
+            getArtist()
+            
+
+        } else {
+            console.log("Failed to create artist.");
+        }
+    });
+}
+
       });
       if (!response.ok) {
         throw new Error("Failed to create artist.");
@@ -180,6 +195,38 @@ function App() {
         headers: {
           "Authorization": `Bearer ${localStorage.getItem("authToken")}`
         },
+
+    }).then((response) => {
+        if (response.ok) {
+            console.log("Artist deleted successfully.");
+        } else {
+            console.log("Failed to delete artist.");
+        }
+    });
+    getArtist();
+}
+
+
+  return (
+    <div className="App">
+
+      <ArtistContext.Provider value={{artists, createArtist, updateArtist, deleteArtist}}>
+
+      <Nav isLoggedIn={isLoggedIn} handleLogout={handleLogout}/>
+
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/login" element={<Login handleLogin={handleLogin} />} />
+        <Route path="/signup" element={<Signup handleSignUp={handleSignUp} />} />
+        <Route path="/profile/:id" element={<Profile fetchUser={fetchUser} user={user}/>}/>
+        <Route path="/createArtist" element={<CreateArtist createArtist={createArtist} />} />
+        <Route path="/favoriteArtist" element={<Index />} />  
+        <Route path="/favoriteArtist/:id" element={<Show artists={artists} updateArtist={updateArtist} deleteArtist={deleteArtist} />} />
+        <Route path="/album" element={<Album />} />
+
+      </Routes>
+
+
       });
       if (!response.ok) {
         throw new Error("Failed to delete artist.");
@@ -213,5 +260,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
