@@ -10,7 +10,7 @@ const Nav = (props) => {
   const [popupOpen, setPopupOpen] = useState(false); 
 
   const handleCreateArtist = () => {
-    navigate("/create-artist");
+    navigate("/createartist");
     setPopupOpen(false);
   }
 
