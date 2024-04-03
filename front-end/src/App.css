@@ -149,8 +149,10 @@ html{
 }
 
 .album {
-  text-align: center;
   background-color: purple;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .album-image {
@@ -168,7 +170,6 @@ html{
 .album .card-content .title {
   color: white; 
 }
-.css {
-  
+.card {
+  border: 2px solid yellow; 
 }
-

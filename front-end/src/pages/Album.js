@@ -67,7 +67,6 @@ const Albums = () => {
 
             <div className="albums-container">
                 {albums.map((album, i) => (
-                    <div className='css'>
                     <div key={i} className="album">
                         <div className="card">
                             <div className="card-image">
@@ -78,7 +77,6 @@ const Albums = () => {
                             <div className="card-content">
                                 <p className="title is-6">{album.name}</p>
                             </div>
-                        </div>
                     </div>
                     </div>
                 ))}
