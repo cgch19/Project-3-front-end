@@ -1,4 +1,4 @@
-import { Route, Routes, useNavigate, useParams } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import Login from './components/Login';
 import Nav from './components/Nav';
 import Signup from './components/Signup';
@@ -20,40 +20,47 @@ function App() {
   const navigate = useNavigate()
   const URL = "http://localhost:4000/api/"
 
-
   const handleLogin = async (user) => {
-    const response = await fetch(URL + "auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(user)
-    });
-    const data = await response.json();
-    if (response.status !== 200) {
-      return data;
+    try {
+      const response = await fetch(URL + "auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user)
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.message);
+      }
+      localStorage.setItem("authToken", data.token);
+      setIsLoggedIn(true);
+      navigate(`/profile/${data.id}`);
+    } catch (error) {
+      console.error("Login failed:", error.message);
     }
-    localStorage.setItem("authToken", data.token);
-    setIsLoggedIn(true);
-
-    navigate(`/profile/${data.id}`);
   };
 
   const handleSignUp = async (user) => {
-    const response = await fetch(URL + "auth/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(user)
-    });
-    const data = await response.json();
-    console.log(data);
-    navigate("/login");
+    try {
+      const response = await fetch(URL + "auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user)
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.message);
+      }
+      navigate("/login");
+    } catch (error) {
+      console.error("Sign up failed:", error.message);
+    }
   };
 
   const handleLogout = () => {
-    console.log(" in handle log");
     localStorage.removeItem("authToken");
     setIsLoggedIn(false);
     navigate("/");
@@ -64,61 +71,72 @@ function App() {
   const fetchUser = async (id) => {
     const token = localStorage.getItem("authToken");
     if (token) {
-      const response = await fetch(URL + `user/${id}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "authorization": token
+      try {
+        const response = await fetch(URL + `user/${id}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "authorization": token
+          }
+        });
+        const data = await response.json();
+        if (!response.ok) {
+          throw new Error(data.message);
         }
-      });
-      const data = await response.json();
-      setUser(data.data);
+        setUser(data.data);
+      } catch (error) {
+        console.error("Failed to fetch user:", error.message);
+      }
     } else {
-      console.log("no token");
+      console.log("No token found.");
     }
   };
 
   useEffect(() => {
-    let token = localStorage.getItem("authToken");
-
-    if (!token) {
-      setIsLoggedIn(false);
-    } else {
+    const token = localStorage.getItem("authToken");
+    if (token) {
       setIsLoggedIn(true);
     }
   }, []);
 
+  const [artists, setArtists] = useState(null);
 
-  // Below this line, it's the CRUD operations for the favorite artists
-  const [artists, setArtists] = useState(null)
-    
   const getArtist = async () => {
     if (!isLoggedIn) {
-        console.log("User is not logged in. Cannot fetch artists.");
-        return;
+      console.log("User is not logged in. Cannot fetch artists.");
+      return;
     }
-    const response = await fetch(`${URL}favoriteArtist`, {
-      headers: {
-        "Authorization": `Bearer ${localStorage.getItem("authToken")}`
+    try {
+      const response = await fetch(`${URL}favoriteArtist`, {
+        headers: {
+          "Authorization": `Bearer ${localStorage.getItem("authToken")}`
+        }
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.message);
       }
-    });
-    const data = await response.json();
-    setArtists(data.data);
-    console.log("Artists fetched successfully.");
-}
-
-const createArtist = async (artist) => {
-    if (!isLoggedIn) {
-        console.log("User is not logged in. Cannot create artist.");
-        return;
+      setArtists(data.data);
+      console.log("Artists fetched successfully.");
+    } catch (error) {
+      console.error("Failed to fetch artists:", error.message);
     }
-    await fetch(`${URL}favoriteArtist`, {
+  };
+
+  const createArtist = async (artist) => {
+    if (!isLoggedIn) {
+      console.log("User is not logged in. Cannot create artist.");
+      return;
+    }
+    try {
+      const response = await fetch(`${URL}favoriteArtist`, {
         method: "POST",
         headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${localStorage.getItem("authToken")}`
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${localStorage.getItem("authToken")}`
         },
         body: JSON.stringify(artist),
+
     }).then((response) => {
         if (response.ok) {
             console.log("Artist created successfully.");
@@ -131,38 +149,53 @@ const createArtist = async (artist) => {
     });
 }
 
-const updateArtist = async (artist, id) => {
-    if (!isLoggedIn) {
-        console.log("User is not logged in. Cannot update artist.");
-        return;
+      });
+      if (!response.ok) {
+        throw new Error("Failed to create artist.");
+      }
+      console.log("Artist created successfully.");
+      getArtist();
+    } catch (error) {
+      console.error(error.message);
     }
-    await fetch(`${URL}favoriteArtist/${id}`, {
+  };
+
+  const updateArtist = async (artist, id) => {
+    if (!isLoggedIn) {
+      console.log("User is not logged in. Cannot update artist.");
+      return;
+    }
+    try {
+      const response = await fetch(`${URL}favoriteArtist/${id}`, {
         method: "PUT",
         headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${localStorage.getItem("authToken")}`
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${localStorage.getItem("authToken")}`
         },
         body: JSON.stringify(artist),
-    }).then((response) => {
-        if (response.ok) {
-            console.log("Artist updated successfully.");
-        } else {
-            console.log("Failed to update artist.");
-        }
-    });
-    getArtist();
-}
-
-const deleteArtist = async (id) => {
-    if (!isLoggedIn) {
-        console.log("User is not logged in. Cannot delete artist.");
-        return;
+      });
+      if (!response.ok) {
+        throw new Error("Failed to update artist.");
+      }
+      console.log("Artist updated successfully.");
+      getArtist();
+    } catch (error) {
+      console.error(error.message);
     }
-    await fetch(`${URL}favoriteArtist/${id}`, {
+  };
+
+  const deleteArtist = async (id) => {
+    if (!isLoggedIn) {
+      console.log("User is not logged in. Cannot delete artist.");
+      return;
+    }
+    try {
+      const response = await fetch(`${URL}favoriteArtist/${id}`, {
         method: "DELETE",
         headers: {
-            "Authorization": `Bearer ${localStorage.getItem("authToken")}`
+          "Authorization": `Bearer ${localStorage.getItem("authToken")}`
         },
+
     }).then((response) => {
         if (response.ok) {
             console.log("Artist deleted successfully.");
@@ -193,6 +226,36 @@ const deleteArtist = async (id) => {
 
       </Routes>
 
+
+      });
+      if (!response.ok) {
+        throw new Error("Failed to delete artist.");
+      }
+      console.log("Artist deleted successfully.");
+      getArtist();
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
+  useEffect(() => {
+    getArtist();
+  }, [isLoggedIn]);
+
+  return (
+    <div className="App">
+      <ArtistContext.Provider value={{ artists, createArtist, updateArtist, deleteArtist }}>
+        <Nav isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/login" element={<Login handleLogin={handleLogin} />} />
+          <Route path="/signup" element={<Signup handleSignUp={handleSignUp} />} />
+          <Route path="/profile/:id" element={<Profile fetchUser={fetchUser} user={user} />} />
+          <Route path="/createArtist" element={<CreateArtist createArtist={createArtist} />} />
+          <Route path="/favoriteArtist" element={<Index />} />
+          <Route path="/favoriteArtist/:id" element={<Show artists={artists} updateArtist={updateArtist} deleteArtist={deleteArtist} />} />
+          <Route path="/album" element={<Album />} />
+        </Routes>
       </ArtistContext.Provider>
     </div>
   );
