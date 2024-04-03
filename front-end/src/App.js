@@ -8,6 +8,7 @@ import CreateArtist from './pages/FavoriteArtistForm';
 import Album from './pages/Album';
 import { useEffect, useState, createContext } from 'react';
 import './App.css';
+import Index from './pages/Index';
 
 export const ArtistContext = createContext(null)
 
@@ -83,9 +84,9 @@ function App() {
     }
   }, [])
 
+
   // Below is the CRUD artist code
   const [artists, setArtists] = useState(null)
-    
   const getArtist = async () => {
       const response = await fetch(URL);
       const data = await response.json();
