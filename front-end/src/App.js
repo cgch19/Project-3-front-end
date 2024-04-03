@@ -15,7 +15,7 @@ export const ArtistContext = createContext(null)
 
 function App() {
   // below this line, it's the login and signup functions
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("authToken"))
   const navigate = useNavigate()
   const URL = "http://localhost:4000/api/"
 
@@ -119,11 +119,13 @@ const createArtist = async (artist) => {
     }).then((response) => {
         if (response.ok) {
             console.log("Artist created successfully.");
+            getArtist()
+            
+
         } else {
             console.log("Failed to create artist.");
         }
     });
-    getArtist();
 }
 
 const updateArtist = async (artist, id) => {
