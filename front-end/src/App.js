@@ -173,7 +173,6 @@ const deleteArtist = async (id) => {
     getArtist();
 }
 
-
   return (
     <div className="App">
 
