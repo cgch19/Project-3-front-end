@@ -77,7 +77,7 @@ const Albums = () => {
                             <div className="card-content">
                                 <p className="title is-6">{album.name}</p>
                             </div>
-                        </div>
+                    </div>
                     </div>
                 ))}
             </div>

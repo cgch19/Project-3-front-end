@@ -149,13 +149,17 @@ html{
 }
 
 .album {
-  text-align: center;
+  background-color: purple;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .album-image {
   width: 100%;
   height: auto;
   border-radius: 5px;
+  
 }
 .search-container {
   display: flex;
@@ -166,4 +170,12 @@ html{
 .album .card-content .title {
   color: white; 
 }
-
+.card {
+  border: 2px solid yellow; 
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
