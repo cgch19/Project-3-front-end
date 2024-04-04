@@ -33,15 +33,6 @@ return (
             <Box >
             <h2 className="artist">Add Favorite Artist</h2>
                 <form className="style-up" onSubmit={handleSubmit}>
-                    <Field >
-                        <Input
-                            type="text"
-                            name="song"
-                            value={form.song}
-                            onChange={handleChange}
-                            placeholder="Song"
-                        />
-                    </Field>
                     <Field>
                         <Input
                             type="text"
@@ -49,6 +40,15 @@ return (
                             value={form.artist}
                             onChange={handleChange}
                             placeholder="Artist"
+                        />
+                    </Field>
+                    <Field >
+                        <Input
+                            type="text"
+                            name="song"
+                            value={form.song}
+                            onChange={handleChange}
+                            placeholder="Song"
                         />
                     </Field>
                     <Field>

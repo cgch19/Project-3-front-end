@@ -179,7 +179,49 @@ html{
   align-items: center;
   padding: 20px;
 }
-.form-scroll {
-  max-height: 300px;
+.artist-content {
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  margin-bottom: 10px;
+  background-color: rgb(190, 140, 231);
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.artist-info {
+  flex: 1;
+}
+.artist-actions {
+  display: flex;
+  align-items: center;
+}
+.artist-img {
+  width: 100px;
+  height: auto;
+  margin-left: 20px;
+}
+.artist-link {
+  text-decoration: none;
+}
+.update-button {
+  background-color: rgb(209, 49, 166);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.update-button:hover {
+  background-color: purple;
+}
+.scrolling-container {
+  height: 94vh; 
   overflow-y: auto;
 }
