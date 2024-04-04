@@ -33,9 +33,9 @@ const Show = (props) => {
 
     return(
         <>
-        <Card textAlign="center" style={{width:'400', margin:'0 auto'}}>
+        <Card  className="card-container" textAlign="center" style={{width:'400', margin:'0 auto'}}>
             <Card.Content>
-                <Card.Header.Title className="is-size-3">
+                <Card.Header.Title className="card-header-title">
                     {artist.artist}
                 </Card.Header.Title>
                 <Card.Image src={artist.img}/>
@@ -47,7 +47,9 @@ const Show = (props) => {
                     <p>Album Release Date: {artist.releaseDate}</p>
                 </Card.Content>
             </Card.Content>
-            <Button onClick={removeArtist}>Delete</Button>
+            <div className="delete-button">
+            <Button onClick={removeArtist} className="popup-button">Delete</Button>
+            </div>
 
             <section>
                 <Box className="form-box">
@@ -81,7 +83,7 @@ const Show = (props) => {
                             <Label>Release Date</Label>
                             <Input placeholder="Release Date" name="releaseDate" value={form.releaseDate} onChange={handleChange} />
                         </Field>
-                        <Button type="submit">Update</Button>
+                        <Button className="popup-button" type="submit" >Update</Button>
                     </form>
 
 
