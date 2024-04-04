@@ -1,4 +1,4 @@
-import { Route, Routes, useNavigate, useParams } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import Login from './components/Login';
 import Nav from './components/Nav';
 import Signup from './components/Signup';
@@ -124,7 +124,6 @@ const createArtist = async (artist) => {
             console.log("Artist created successfully.");
             getArtist()
             
-
         } else {
             console.log("Failed to create artist.");
         }
