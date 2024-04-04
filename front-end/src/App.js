@@ -149,26 +149,31 @@ const createArtist = async (artist) => {
 }
 
 const updateArtist = async (artist, id) => {
-    if (!isLoggedIn) {
-        console.log("User is not logged in. Cannot update artist.");
-        return;
-    }
-    await fetch(`${URL}favoriteArtist/${id}`, {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${localStorage.getItem("authToken")}`
-        },
-        body: JSON.stringify(artist),
-    }).then((response) => {
-        if (response.ok) {
-            console.log("Artist updated successfully.");
-        } else {
-            console.log("Failed to update artist.");
-        }
-    });
-    getArtist();
-}
+  if (!isLoggedIn) {
+      console.log("User is not logged in. Cannot update artist.");
+      return;
+  }
+  
+  try {
+      const response = await fetch(`${URL}favoriteArtist/${id}`, {
+          method: "PUT",
+          headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${localStorage.getItem("authToken")}`
+          },
+          body: JSON.stringify(artist),
+      });
+
+      if (response.ok) {
+          console.log("Artist updated successfully.");
+          await getArtist(); 
+      } else {
+          throw new Error(`Failed to update artist with status: ${response.status}`);
+      }
+  } catch (err) {
+      console.error("Error updating artist:", err.message);
+  }
+};
 
 const deleteArtist = async (id) => {
     if (!isLoggedIn) {
