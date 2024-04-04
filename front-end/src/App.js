@@ -103,6 +103,7 @@ function App() {
       }
     });
     const data = await response.json();
+    console.log(data.data);
     setArtists(data.data);
     console.log("Artists fetched successfully.");
 }
