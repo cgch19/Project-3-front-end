@@ -47,14 +47,14 @@ const Index = (props) => {
                 </Content>
 
             )
-        })
+            })
     }
 
     const loading = () => {
         return <h1>Loading . . .</h1>
     }
 
-    return (artists && artists.artists.length > 0 ? loaded() : loading())
+    return ( props.artists && artists.artists.length > 0 ? loaded() : loading())
 }
 
 export default Index;

@@ -186,7 +186,7 @@ const deleteArtist = async (id) => {
         <Route path="/signup" element={<Signup handleSignUp={handleSignUp} />} />
         <Route path="/profile/:id" element={<Profile fetchUser={fetchUser} user={user}/>}/>
         <Route path="/createArtist" element={<CreateArtist createArtist={createArtist} />} />
-        <Route path="/favoriteArtist" element={<Index />} />  
+        <Route path="/favoriteArtist" element={<Index artists={artists} />} />  
         <Route path="/favoriteArtist/:id" element={<Show artists={artists} updateArtist={updateArtist} deleteArtist={deleteArtist} />} />
         <Route path="/album" element={<Album />} />
 
