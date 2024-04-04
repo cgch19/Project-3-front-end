@@ -229,3 +229,48 @@ html{
 .favartist-album {
   width: 60%;
 }
+
+
+.card-container {
+  width: 400px;
+  margin: 0 auto;
+  background-color: rgb(151, 15, 230);
+  margin: 0 auto;
+  margin-top: auto;
+}
+.card-container{
+  height: 91vh; 
+  overflow-y: auto;
+}
+
+.delete-button {
+  margin-top: 20px;
+}
+.form-box form {
+  margin-top: 20px;
+}
+.form-box form label {
+  font-weight: bold;
+}
+.form-box form input {
+  margin-bottom: 10px;
+}
+
+.form-box form button {
+  margin-top: 10px;
+}
+
+.card-content p {
+  color:white; 
+  
+}
+.card-container .card-image img {
+  width: 100%; 
+  height: auto; 
+  border-radius: 5px; 
+}
+.card-header-title {
+  font-size: 50px;
+  font-weight: bold;
+  color: goldenrod; 
+}
