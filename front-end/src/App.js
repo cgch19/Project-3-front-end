@@ -92,10 +92,11 @@ function App() {
   // Below this line, it's the CRUD operations for the favorite artists
   const [artists, setArtists] = useState(null)
     
-  const getArtist = async () => {
+const getArtist = async () => {
+  try {
     if (!isLoggedIn) {
-        console.log("User is not logged in. Cannot fetch artists.");
-        return;
+      console.log("User is not logged in. Cannot fetch artists.");
+      return;
     }
     const response = await fetch(`${URL}favoriteArtist`, {
       headers: {
@@ -103,10 +104,26 @@ function App() {
       }
     });
     const data = await response.json();
-    console.log(data.data);
-    setArtists(data.data);
-    console.log("Artists fetched successfully.");
-}
+    if (response.ok) {
+      setArtists(data.data);
+      console.log("Artists fetched successfully.");
+    } else {
+      console.log("Failed to fetch artists.");
+    }
+  } catch (error) {
+    console.error("Error fetching artists:", error);
+  }
+};
+
+useEffect(() => {
+  let token = localStorage.getItem("authToken");
+  if (!token) {
+    setIsLoggedIn(false);
+  } else {
+    setIsLoggedIn(true);
+    getArtist();
+  }
+}, [isLoggedIn]);
 
 const createArtist = async (artist) => {
     if (!isLoggedIn) {
@@ -194,6 +211,7 @@ const deleteArtist = async (id) => {
 
       </ArtistContext.Provider>
     </div>
+  
   );
 }
 
