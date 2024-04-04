@@ -85,6 +85,7 @@ function App() {
       setIsLoggedIn(false);
     } else {
       setIsLoggedIn(true);
+      // getArtist()
     }
   }, []);
 
@@ -141,6 +142,7 @@ const createArtist = async (artist) => {
         if (response.ok) {
             console.log("Artist created successfully.");
             getArtist()
+            navigate(`/favoriteArtist`)
             
         } else {
             console.log("Failed to create artist.");
@@ -194,6 +196,8 @@ const deleteArtist = async (id) => {
     });
     getArtist();
 }
+
+
 
   return (
     <div className="App">
