@@ -8,7 +8,7 @@ const Show = (props) => {
     const params = useParams()
     const id = params.id
     const artists = useContext(ArtistContext)
-    const artist = artists.find((a) => a._id === id)
+    const artist = artists.artists?.find((a) => a._id === id)
 
     const [form, setForm] = useState(artist)
 
@@ -32,7 +32,7 @@ const Show = (props) => {
 
     return(
         <>
-        <Card textAlign="#" style="#">
+        <Card textAlign="#" style={{width:'400', margin:'0 auto'}}>
             <Card.Content>
                 <Card.Header.Title className="#">
                     {artist.artist}
