@@ -17,6 +17,7 @@ const Nav = (props) => {
   const handleSearchAlbum = () => {
     navigate("/Album");
     setPopupOpen(false);
+    
   }
   const handleFavoriteArtist = () => {
     navigate("/favoriteartist");
@@ -24,11 +25,12 @@ const Nav = (props) => {
   }
 
   const loggedInLink = (
-    <span className="popup">
-      <button onClick={() => { handleSearchAlbum(); setPopupOpen(false); }} className="nav-button">Search Album🔍</button>
-      <button onClick={() => { handleFavoriteArtist(); setPopupOpen(false); }} className="nav-button">Favorite Artists</button>
-      <button onClick={() => { handleCreateArtist(); setPopupOpen(false); }} className="nav-button">Create Artist</button>
-      <button  onClick={props.handleLogout} className="nav-button">Logout</button>
+    <span >
+      {/* <Button onClick={handleSearchAlbum} className="nav-button">Search Album🔍</Button> */}
+       {/* <Button onClick={() => { handleSearchAlbum(); setPopupOpen(false); }} className="nav-button">Search Album🔍</Button>
+      <button onClick={handleFavoriteArtist} className="nav-button">Favorite Artists</button>
+      <button onClick={handleCreateArtist} className="nav-button">Create Artist</button> */}
+      {/* <button  onClick={props.handleLogout} className="nav-button">Logout</button> */}
     </span>
   )
 
@@ -54,8 +56,12 @@ const Nav = (props) => {
                 <div className='content'>
                   {loggedInLink}
                 </div>
-                <div>
-                <Button onClick={() => {close(); setPopupOpen(false);}} className="close-menu">Close Menu</Button>
+                <div className="popup">
+                <Button onClick={() => { close(); handleSearchAlbum(); setPopupOpen(false); }} className="nav-button">Search Album🔍</Button>
+                <Button onClick={() => { close(); handleFavoriteArtist(); setPopupOpen(false); }} className="nav-button">Favorite Artists</Button>
+                <Button onClick={() => { close(); handleCreateArtist(); setPopupOpen(false); }} className="nav-button">Create Artist</Button>
+                <button  onClick={props.handleLogout} className="nav-button">Logout</button>
+                {/* <Button onClick={() => {close(); setPopupOpen(false);}} className="close-menu">Close Menu</Button> */}
                 </div>
               </div>
             )}
