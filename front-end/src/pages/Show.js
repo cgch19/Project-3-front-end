@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Card, Box, Form, Button} from "react-bulma-components";
 import { ArtistContext } from "../App";   
@@ -8,7 +8,7 @@ const Show = (props) => {
     const params = useParams()
     const id = params.id
     const artists = useContext(ArtistContext)
-    const artist = artists.find((a) => a._id === id)
+    const artist = artists.artists?.find((a) => a._id === id)
 
     const [form, setForm] = useState(artist)
 
@@ -32,25 +32,25 @@ const Show = (props) => {
 
     return(
         <>
-        <Card textAlign="#" style="#">
+        <Card textAlign="center" style={{width:'400', margin:'0 auto'}}>
             <Card.Content>
-                <Card.Header.Title className="#">
+                <Card.Header.Title className="is-size-3">
                     {artist.artist}
                 </Card.Header.Title>
                 <Card.Image src={artist.img} />
                 <Card.Content>
-                    <p>{artist.song}</p>
-                    <p>{artist.album}</p>
-                    <p>{artist.title}</p>
-                    <p>{artist.genre}</p>
-                    <p>{artist.releaseDate}</p>
+                    <p>Artist Song: {artist.song}</p>
+                    <p>Artist Album: {artist.album}</p>
+                    <p>Artist Title: {artist.title}</p>
+                    <p>Genre: {artist.genre}</p>
+                    <p>Album Release Date: {artist.releaseDate}</p>
                 </Card.Content>
             </Card.Content>
             <Button onClick={removeArtist}>Delete</Button>
 
             <section>
-                <Box className="#">
-                    <h2 className="#">Edit Artist</h2>
+                <Box className="form-box">
+                    <h2 className="is-size-3 has-font-weight-bold">Edit Artist</h2>
                     <form onSubmit={handleSubmit}>
                         <Field>
                             <Label>Artist</Label>
