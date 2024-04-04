@@ -179,3 +179,7 @@ html{
   align-items: center;
   padding: 20px;
 }
+.form-scroll {
+  max-height: 300px;
+  overflow-y: auto;
+}
