@@ -17,7 +17,7 @@ const Index = (props) => {
                         >
                             <div className="artist-info">
                                 <Heading>{artist.artist}</Heading>
-                                <img src={artist.img} alt={artist.artist} />
+                                <img src={artist.img} alt={artist.artist} className="favartist-album"/>
                                 <p>{artist.song}</p>
                                 <p>{artist.album}</p>
                             </div>

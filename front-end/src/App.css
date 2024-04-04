@@ -225,3 +225,7 @@ html{
   height: 94vh; 
   overflow-y: auto;
 }
+
+.favartist-album {
+  width: 60%;
+}

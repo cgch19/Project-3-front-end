@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Card, Box, Form, Button} from "react-bulma-components";
 import { ArtistContext } from "../App";   
@@ -8,7 +8,8 @@ const Show = (props) => {
     const params = useParams()
     const id = params.id
     const artists = useContext(ArtistContext)
-    const artist = artists.artists?.find((a) => a._id === id)
+    const artist = artists.artists?.find((a) => a._id === id) 
+    console.log(artist)
 
     const [form, setForm] = useState(artist)
 
@@ -37,7 +38,7 @@ const Show = (props) => {
                 <Card.Header.Title className="is-size-3">
                     {artist.artist}
                 </Card.Header.Title>
-                <Card.Image src={artist.img} />
+                <Card.Image src={artist.img}/>
                 <Card.Content>
                     <p>Artist Song: {artist.song}</p>
                     <p>Artist Album: {artist.album}</p>
@@ -62,11 +63,11 @@ const Show = (props) => {
                         </Field>
                         <Field>
                             <Label>Album</Label>
-                            <Input placeholder="Album Name" name="album" value={form.album} onChange={handleChange} />
+                            <Input placeholder="Album Name" name="album" value={form.album} onChange={handleChange}/>
                         </Field>
                         <Field>
                             <Label>Image</Label>
-                            <Input placeholder="Image URL" name="img" value={form.img} onChange={handleChange} />
+                            <Input placeholder="Image URL" name="img" value={form.img} onChange={handleChange}/>
                         </Field>
                         <Field>
                             <Label>Title</Label>
