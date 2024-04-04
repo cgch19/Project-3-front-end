@@ -194,6 +194,7 @@ const deleteArtist = async (id) => {
 
       </ArtistContext.Provider>
     </div>
+  
   );
 }
 
