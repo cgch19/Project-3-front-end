@@ -10,7 +10,7 @@ const Show = (props) => {
     const artists = useContext(ArtistContext)
     const artist = artists.artists?.find((a) => a._id === id) 
     console.log(artist)
-
+    
     const [form, setForm] = useState(artist)
 
     const {Input, Field, Label} = Form;
