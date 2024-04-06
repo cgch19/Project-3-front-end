@@ -5,7 +5,6 @@ const FavoriteArtistForm = (props) => {
     const newArtistForm = {
         song: "",
         artist: "",
-        title: "",
         releaseDate: "",
         genre: "",
         album: "",
@@ -51,15 +50,7 @@ return (
                             placeholder="Song"
                         />
                     </Field>
-                    <Field>
-                        <Input
-                            type="text"
-                            name="title"
-                            value={form.title}
-                            onChange={handleChange}
-                            placeholder="Title"
-                        />
-                    </Field>
+
                     <Field>
                         <Input
                             type="text"
