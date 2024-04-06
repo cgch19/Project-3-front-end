@@ -10,7 +10,7 @@ const Show = (props) => {
     const artists = useContext(ArtistContext)
     const artist = artists.artists?.find((a) => a._id === id) 
     console.log(artist)
-
+    
     const [form, setForm] = useState(artist)
 
     const {Input, Field, Label} = Form;
@@ -33,21 +33,22 @@ const Show = (props) => {
 
     return(
         <>
-        <Card textAlign="center" style={{width:'400', margin:'0 auto'}}>
+        <Card  className="card-container" textAlign="center" style={{width:'400', margin:'0 auto'}}>
             <Card.Content>
-                <Card.Header.Title className="is-size-3">
+                <Card.Header.Title className="card-header-title">
                     {artist.artist}
                 </Card.Header.Title>
                 <Card.Image src={artist.img}/>
                 <Card.Content>
                     <p>Artist Song: {artist.song}</p>
                     <p>Artist Album: {artist.album}</p>
-                    <p>Artist Title: {artist.title}</p>
                     <p>Genre: {artist.genre}</p>
                     <p>Album Release Date: {artist.releaseDate}</p>
                 </Card.Content>
             </Card.Content>
-            <Button onClick={removeArtist}>Delete</Button>
+            <div className="delete-button">
+            <Button onClick={removeArtist} className="popup-button">Delete</Button>
+            </div>
 
             <section>
                 <Box className="form-box">
@@ -69,10 +70,7 @@ const Show = (props) => {
                             <Label>Image</Label>
                             <Input placeholder="Image URL" name="img" value={form.img} onChange={handleChange}/>
                         </Field>
-                        <Field>
-                            <Label>Title</Label>
-                            <Input placeholder="Title" name="title" value={form.title} onChange={handleChange} />
-                        </Field>
+
                         <Field>
                             <Label>Genre</Label>
                             <Input placeholder="Genre" name="genre" value={form.genre} onChange={handleChange} />
@@ -81,7 +79,7 @@ const Show = (props) => {
                             <Label>Release Date</Label>
                             <Input placeholder="Release Date" name="releaseDate" value={form.releaseDate} onChange={handleChange} />
                         </Field>
-                        <Button type="submit">Update</Button>
+                        <Button className="popup-button" type="submit" >Update</Button>
                     </form>
 
 
