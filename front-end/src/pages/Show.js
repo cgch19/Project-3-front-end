@@ -42,7 +42,6 @@ const Show = (props) => {
                 <Card.Content>
                     <p>Artist Song: {artist.song}</p>
                     <p>Artist Album: {artist.album}</p>
-                    <p>Artist Title: {artist.title}</p>
                     <p>Genre: {artist.genre}</p>
                     <p>Album Release Date: {artist.releaseDate}</p>
                 </Card.Content>
@@ -71,10 +70,7 @@ const Show = (props) => {
                             <Label>Image</Label>
                             <Input placeholder="Image URL" name="img" value={form.img} onChange={handleChange}/>
                         </Field>
-                        <Field>
-                            <Label>Title</Label>
-                            <Input placeholder="Title" name="title" value={form.title} onChange={handleChange} />
-                        </Field>
+
                         <Field>
                             <Label>Genre</Label>
                             <Input placeholder="Genre" name="genre" value={form.genre} onChange={handleChange} />
