@@ -19,7 +19,7 @@ function App() {
   // below this line, it's the login and signup functions
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("authToken"))
   const navigate = useNavigate()
-  const URL = process.env.URL
+  const URL = process.env.REACT_APP_URL
 
 
   const handleLogin = async (user) => {
