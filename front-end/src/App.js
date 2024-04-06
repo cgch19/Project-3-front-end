@@ -1,5 +1,4 @@
-import { Route, Routes, useNavigate } from 'react-router-dom';
-import Login from './components/Login';
+import {  Route, Routes, useNavigate } from 'react-router-dom';
 import Nav from './components/Nav';
 import Signup from './components/Signup';
 import Homepage from './pages/Homepage';
@@ -8,8 +7,10 @@ import CreateArtist from './pages/FavoriteArtistForm';
 import Index from './pages/Index';
 import Show from './pages/Show';
 import Album from './pages/Album';
+import Login from './components/Login';
 import { useEffect, useState, createContext } from 'react';
 import './App.css';
+
 
 export const ArtistContext = createContext(null);
 
@@ -18,7 +19,7 @@ function App() {
   // below this line, it's the login and signup functions
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("authToken"))
   const navigate = useNavigate()
-  const URL = "http://localhost:4000/api/"
+  const URL = process.env.URL
 
 
   const handleLogin = async (user) => {
@@ -198,15 +199,11 @@ const deleteArtist = async (id) => {
 }
 
 
-
   return (
     <div className="App">
-
       <ArtistContext.Provider value={{artists, createArtist, updateArtist, deleteArtist}}>
-
       <Nav isLoggedIn={isLoggedIn} handleLogout={handleLogout}/>
-
-      <Routes>
+      <Routes >
         <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<Login handleLogin={handleLogin} />} />
         <Route path="/signup" element={<Signup handleSignUp={handleSignUp} />} />
@@ -215,9 +212,7 @@ const deleteArtist = async (id) => {
         <Route path="/favoriteArtist" element={<Index />} />  
         <Route path="/favoriteArtist/:id" element={<Show artists={artists} updateArtist={updateArtist} deleteArtist={deleteArtist} />} />
         <Route path="/album" element={<Album />} />
-
       </Routes>
-
       </ArtistContext.Provider>
     </div>
   
