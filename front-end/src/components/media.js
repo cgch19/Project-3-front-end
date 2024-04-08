@@ -4,7 +4,7 @@ import ReactMedia from 'react-media';
 const CustomMedia = ({ children }) => {
     useEffect(() => {
       return () => {
-        // Cleanup code here (if needed)
+        
       };
     }, []);
   return (
