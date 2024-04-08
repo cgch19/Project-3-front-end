@@ -274,3 +274,26 @@ html{
   font-weight: bold;
   color: goldenrod; 
 }
+@media screen and (max-width: 767px) {
+  .App {
+    font-size: 14px;
+  }
+}
+@media only screen 
+  and (device-width: 375px) 
+  and (device-height: 812px) 
+  and (-webkit-device-pixel-ratio: 3)
+  and (orientation: portrait) {
+  .App {
+    font-size: 16px;
+  }
+}
+@media only screen 
+  and (device-width: 812px) 
+  and (device-height: 375px) 
+  and (-webkit-device-pixel-ratio: 3)
+  and (orientation: landscape) {
+  .App {
+    font-size: 16px;
+  }
+}
