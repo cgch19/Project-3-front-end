@@ -9,6 +9,7 @@ import Show from './pages/Show';
 import Album from './pages/Album';
 import Login from './components/Login';
 import { useEffect, useState, createContext } from 'react';
+import CustomMedia from './components/media.js';
 import './App.css';
 
 
@@ -198,25 +199,31 @@ const deleteArtist = async (id) => {
     getArtist();
 }
 
+return (
+  <div className="App">
+    <CustomMedia>
+        {{
+          phone: <p>Phone Screen</p>,
+          tablet: <p>Tablet Screen</p>,
+          laptop: <p>Laptop Screen</p>
+        }}
+      </CustomMedia>
+        <ArtistContext.Provider value={{ artists, createArtist, updateArtist, deleteArtist }}>
+          <Nav isLoggedIn={isLoggedIn} handleLogout={handleLogout}/>
+          <Routes >
+            <Route path="/" element={<Homepage />} />
+            <Route path="/login" element={<Login handleLogin={handleLogin} />} />
+            <Route path="/signup" element={<Signup handleSignUp={handleSignUp} />} />
+            <Route path="/profile/:id" element={<Profile fetchUser={fetchUser} user={user}/>}/>
+            <Route path="/createArtist" element={<CreateArtist createArtist={createArtist} />} />
+            <Route path="/favoriteArtist" element={<Index />} />  
+            <Route path="/favoriteArtist/:id" element={<Show artists={artists} updateArtist={updateArtist} deleteArtist={deleteArtist} />} />
+            <Route path="/album" element={<Album />} />
+          </Routes>
+        </ArtistContext.Provider>
+  </div>
+);
 
-  return (
-    <div className="App">
-      <ArtistContext.Provider value={{artists, createArtist, updateArtist, deleteArtist}}>
-      <Nav isLoggedIn={isLoggedIn} handleLogout={handleLogout}/>
-      <Routes >
-        <Route path="/" element={<Homepage />} />
-        <Route path="/login" element={<Login handleLogin={handleLogin} />} />
-        <Route path="/signup" element={<Signup handleSignUp={handleSignUp} />} />
-        <Route path="/profile/:id" element={<Profile fetchUser={fetchUser} user={user}/>}/>
-        <Route path="/createArtist" element={<CreateArtist createArtist={createArtist} />} />
-        <Route path="/favoriteArtist" element={<Index />} />  
-        <Route path="/favoriteArtist/:id" element={<Show artists={artists} updateArtist={updateArtist} deleteArtist={deleteArtist} />} />
-        <Route path="/album" element={<Album />} />
-      </Routes>
-      </ArtistContext.Provider>
-    </div>
-  
-  );
 }
 
 
