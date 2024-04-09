@@ -274,26 +274,21 @@ html{
   font-weight: bold;
   color: goldenrod; 
 }
-@media screen and (max-width: 767px) {
-  .App {
-    font-size: 14px;
+
+@media screen and (max-width: 405px) {
+  .phone-screen {
+    font-size: 16px; 
   }
 }
-@media only screen 
-  and (device-width: 375px) 
-  and (device-height: 812px) 
-  and (-webkit-device-pixel-ratio: 3)
-  and (orientation: portrait) {
-  .App {
-    font-size: 16px;
+
+@media screen and (min-width: 700px) and (max-width: 750px) {
+  .tablet-screen {
+    font-size: 20px; 
   }
 }
-@media only screen 
-  and (device-width: 812px) 
-  and (device-height: 375px) 
-  and (-webkit-device-pixel-ratio: 3)
-  and (orientation: landscape) {
-  .App {
-    font-size: 16px;
+
+@media screen and (min-width: 1024px) {
+  .laptop-screen {
+    font-size: 24px; 
   }
 }

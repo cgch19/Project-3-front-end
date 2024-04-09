@@ -9,7 +9,6 @@ import Show from './pages/Show';
 import Album from './pages/Album';
 import Login from './components/Login';
 import { useEffect, useState, createContext } from 'react';
-import CustomMedia from './components/media.js';
 import './App.css';
 
 
@@ -201,13 +200,6 @@ const deleteArtist = async (id) => {
 
 return (
   <div className="App">
-    <CustomMedia>
-        {{
-          phone: <p>Phone Screen</p>,
-          tablet: <p>Tablet Screen</p>,
-          laptop: <p>Laptop Screen</p>
-        }}
-      </CustomMedia>
         <ArtistContext.Provider value={{ artists, createArtist, updateArtist, deleteArtist }}>
           <Nav isLoggedIn={isLoggedIn} handleLogout={handleLogout}/>
           <Routes >
