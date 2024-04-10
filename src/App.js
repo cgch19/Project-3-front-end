@@ -36,7 +36,7 @@ function App() {
     localStorage.setItem("authToken", data.token);
     setIsLoggedIn(true);
 
-    navigate(`/profile/${data.id}`);
+    navigate(`/profile`);
   };
 
   const handleSignUp = async (user) => {
@@ -68,7 +68,7 @@ function App() {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "authorization": token
+          "authorization": `Bearer ${token}`
         }
       });
       const data = await response.json();
