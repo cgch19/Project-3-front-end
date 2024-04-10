@@ -11,7 +11,6 @@ import Login from './components/Login';
 import { useEffect, useState, createContext } from 'react';
 import './App.css';
 
-
 export const ArtistContext = createContext(null);
 
 function App() {
@@ -157,6 +156,7 @@ const updateArtist = async (artist, id) => {
       return;
   }
   
+  
   try {
       const response = await fetch(`${URL}favoriteArtist/${id}`, {
           method: "PUT",
@@ -207,7 +207,7 @@ return (
             <Route path="/login" element={<Login handleLogin={handleLogin} />} />
             <Route path="/signup" element={<Signup handleSignUp={handleSignUp} />} />
             <Route path="/profile/:id" element={<Profile fetchUser={fetchUser} user={user}/>}/>
-            <Route path="/createArtist" element={<CreateArtist createArtist={createArtist} />} />
+            <Route path="/createArtist" element={<CreateArtist createArtist={(artist) => createArtist(artist)} />} />
             <Route path="/favoriteArtist" element={<Index />} />  
             <Route path="/favoriteArtist/:id" element={<Show artists={artists} updateArtist={updateArtist} deleteArtist={deleteArtist} />} />
             <Route path="/album" element={<Album />} />
