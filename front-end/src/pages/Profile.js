@@ -1,12 +1,9 @@
 import { useEffect } from "react";
-import {useParams} from "react-router-dom"
 
 const Profile = ({user, fetchUser}) => {
-    const params = useParams()
 
     useEffect(() => {
-
-        fetchUser(params.id)
+        fetchUser()
     }, [])
 
     const userProfile = () => {

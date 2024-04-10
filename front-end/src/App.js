@@ -38,7 +38,7 @@ function App() {
     localStorage.setItem("authToken", data.token);
     setIsLoggedIn(true);
 
-    navigate(`/profile/${data.id}`);
+    navigate(`/profile`);
   };
 
   const handleSignUp = async (user) => {
@@ -63,14 +63,14 @@ function App() {
 
   const [user, setUser] = useState(null);
 
-  const fetchUser = async (id) => {
+  const fetchUser = async () => {
     const token = localStorage.getItem("authToken");
     if (token) {
-      const response = await fetch(URL + `user/${id}`, {
+      const response = await fetch(URL + `user`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "authorization": token
+          "authorization": `Bearer ${token}`
         }
       });
       const data = await response.json();
@@ -214,7 +214,7 @@ return (
             <Route path="/" element={<Homepage />} />
             <Route path="/login" element={<Login handleLogin={handleLogin} />} />
             <Route path="/signup" element={<Signup handleSignUp={handleSignUp} />} />
-            <Route path="/profile/:id" element={<Profile fetchUser={fetchUser} user={user}/>}/>
+            <Route path="/profile" element={<Profile fetchUser={fetchUser} user={user}/>}/>
             <Route path="/createArtist" element={<CreateArtist createArtist={createArtist} />} />
             <Route path="/favoriteArtist" element={<Index />} />  
             <Route path="/favoriteArtist/:id" element={<Show artists={artists} updateArtist={updateArtist} deleteArtist={deleteArtist} />} />

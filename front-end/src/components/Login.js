@@ -22,10 +22,10 @@ return (
       <h1 >Log In</h1>
     </div>
     <form onSubmit={handleSubmit}>
-    <div>
+    {/* <div>
         <label htmlFor="username"/>
         <input type="text" name="username" placeholder="Username" onChange={handleChange}/>
-    </div>
+    </div> */}
     <div>                
         <label htmlFor="email"/>
         <input type="email" name="email" placeholder="Email" onChange={handleChange}/>
