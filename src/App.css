@@ -130,6 +130,7 @@ html{
 }
 .search-input {
   flex: 2;
+  width: 200px;
   padding: 10px;
   font-size: 16px;
 }
