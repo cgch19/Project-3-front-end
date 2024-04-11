@@ -36,7 +36,7 @@ function App() {
     localStorage.setItem("authToken", data.token);
     setIsLoggedIn(true);
 
-    navigate(`/profile`);
+    navigate(`/`);
   };
 
   const handleSignUp = async (user) => {

@@ -30,6 +30,10 @@ const Show = (props) => {
         props.deleteArtist(id)
         navigate(`/favoriteArtist`)
     }
+    
+    const handleCancel = () => {
+        navigate('/favoriteArtist')
+    }
 
     return(
         <>
@@ -47,7 +51,7 @@ const Show = (props) => {
                 </Card.Content>
             </Card.Content>
             <div className="delete-button">
-            <Button onClick={removeArtist} className="popup-button">Delete</Button>
+            <Button onClick={removeArtist} className="popup-button">Delete Artist</Button>
             </div>
 
             <section>
@@ -55,40 +59,38 @@ const Show = (props) => {
                     <h2 className="is-size-3 has-font-weight-bold">Edit Artist</h2>
                     <form onSubmit={handleSubmit}>
                         <Field>
-                            <Label>Artist</Label>
+                            <Label>Artist: </Label>
                             <Input placeholder="Artist Name" name="artist" value={form.artist} onChange={handleChange} />
                         </Field>
                         <Field>
-                            <Label>Song</Label>
+                            <Label>Song: </Label>
                             <Input placeholder="Song Name" name="song" value={form.song} onChange={handleChange} />
                         </Field>
                         <Field>
-                            <Label>Album</Label>
+                            <Label>Album: </Label>
                             <Input placeholder="Album Name" name="album" value={form.album} onChange={handleChange}/>
                         </Field>
                         <Field>
-                            <Label>Image</Label>
+                            <Label>Image: </Label>
                             <Input placeholder="Image URL" name="img" value={form.img} onChange={handleChange}/>
                         </Field>
 
                         <Field>
-                            <Label>Genre</Label>
+                            <Label>Genre: </Label>
                             <Input placeholder="Genre" name="genre" value={form.genre} onChange={handleChange} />
                         </Field>
                         <Field>
-                            <Label>Release Date</Label>
+                            <Label>Release Date: </Label>
                             <Input placeholder="Release Date" name="releaseDate" value={form.releaseDate} onChange={handleChange} />
                         </Field>
+
+                        <Button onClick={handleCancel} className="popup-button" >Cancel</Button>
+
                         <Button className="popup-button" type="submit" >Update</Button>
+
                     </form>
-
-
-
                 </Box>
             </section>
-
-                    
-
         </Card>
         </>
     )

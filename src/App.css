@@ -19,10 +19,11 @@ html{
 .homepage-heading h1 {
   font-size: 55px; 
   color: whitesmoke;
-  font-family: "BatFont", cursive;
+  font-family: "Bungee Spice", "Roboto Mono", cursive;
 }
 .form-container {
-  background-color: rgb(151, 15, 230);
+  background-color: rgb(172, 49, 131);
+  opacity: .95;
   padding: 30px;
   display: flex;
   flex-direction: column;
@@ -46,11 +47,13 @@ html{
   cursor: pointer;
 }
 .artist {
-  color: white;
-  font-family: "BatFont", cursive;
+  font-weight: 750;
+  font-style: normal;
+  font-family: "Titillium Web", sans-serif;
 }
 .form-section {
   background-color: rgb(151, 15, 230);
+  opacity: .9;
   padding: 50px;
   border-radius: 20px;
 }
@@ -75,18 +78,20 @@ html{
 }
 
 .nav-button {
-  background-color: rgb(234, 10, 159); 
+  background-color: rgb(205, 35, 148);
   border: none;
   color: white;
   padding: 10px 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 17px;
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 20px;
-  font-family: "BatFont", cursive;
+  font-weight: 750;
+  font-style: normal;
+  font-family: "Titillium Web", sans-serif;
 }
 .nav-button:hover {
   background-color: purple; 
@@ -119,7 +124,6 @@ html{
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 20px; 
-  font-family: "BatFont", cursive;
 }
 .popup-button:hover {
   background-color: purple;
@@ -134,10 +138,14 @@ html{
   font-size: 16px;
 }
 .label {
-  font-family: "BatFont", cursive;
+  font-weight: 750;
+  font-style: normal;
+  font-family: "Titillium Web", sans-serif;
 }
 .login-heading h1{
-  font-family: "BatFont", cursive;
+  font-weight: 750;
+  font-style: normal;
+  font-family: "Titillium Web", sans-serif;
 }
 
 .albums-container {
@@ -187,6 +195,7 @@ html{
   padding: 20px;
   margin-bottom: 10px;
   background-color: rgb(190, 140, 231);
+  opacity: 0.9;
   border-radius: 5px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
   margin-top: 10px;
@@ -232,6 +241,7 @@ html{
 
 
 .card-container {
+  opacity: .9;
   width: 400px;
   margin: 0 auto;
   background-color: rgb(151, 15, 230);
