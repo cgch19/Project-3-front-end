@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Box, Form, Button } from 'react-bulma-components';
+import { useNavigate } from "react-router-dom";
 
 const FavoriteArtistForm = (props) => {
     const newArtistForm = {
@@ -8,12 +9,13 @@ const FavoriteArtistForm = (props) => {
         releaseDate: "",
         genre: "",
         album: "",
-        photo: "",
+        image: [],
     }
 
 const [form, setForm] = useState(newArtistForm);
 
-const { Input, Field, Label } = Form;
+const { Input, Field } = Form;
+const navigate = useNavigate()
 
 const handleChange = (index) => {
     setForm({...form, [index.target.name]: index.target.value})
@@ -24,6 +26,10 @@ const handleSubmit = (index) => {
     props.createArtist(form);
     setForm(newArtistForm);
 };
+
+const handleCancel = () => {
+    navigate('/')
+}
 
 
 return (
@@ -81,12 +87,14 @@ return (
                     <Field>
                         <Input
                             type="text"
-                            name="photo"
+                            name="image"
                             value={form.photo}
                             onChange={handleChange}
-                            placeholder="Photo"
+                            placeholder="Image URL"
                         />
                     </Field>
+
+                    <Button onClick={handleCancel} className="popup-button" >Cancel</Button>
                     <Button className="popup-button" type="submit">Submit</Button>
                 </form>
             </Box>

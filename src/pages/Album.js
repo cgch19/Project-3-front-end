@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+// Ref. Spotify API Developer Tools
 const CLIENT_ID = "cf65567cf07049ef8d127967caae3057";
 const CLIENT_SECRET = "84045d61108e4c918a0d2d27613e93bf";
 
@@ -22,6 +23,7 @@ const Albums = () => {
             .then(data => setAccessToken(data.access_token));
     }, []);
 
+    // Ref. Spotify API Developer Tools
     async function search() {
         let searchParameters = {
             method: 'GET',
