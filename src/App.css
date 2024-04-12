@@ -303,3 +303,25 @@ html{
     font-size: 24px; 
   }
 }
+.album .card .card-image button {
+  color: white; 
+  background-color: red; 
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 20px;
+}
+.album .card .card-image p {
+  color: white; 
+}
+@media screen and (max-width: 600px) {
+
+  .search-container {
+      flex-direction: column;
+  }
+
+  .search-input {
+      margin-bottom: 10px;
+  }
+}

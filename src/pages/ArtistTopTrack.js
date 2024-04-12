@@ -8,6 +8,7 @@ const Album = () => {
     const [searchInput, setSearchInput] = useState('');
     const [accessToken, setAccessToken] = useState('');
     const [songs, setSongs] = useState([]);
+    const [selectedSongIndex, setSelectedSongIndex] = useState(null);
 
     useEffect(() => {
         let authParameters = {
@@ -43,8 +44,24 @@ const Album = () => {
 
         await fetch(`https://api.spotify.com/v1/artists/${artistID}/top-tracks?market=US`, searchParameters)
             .then(response => response.json())
-            .then(data => setSongs(data.tracks));
+            .then(data => {
+                setSongs(data.tracks);
+                setSelectedSongIndex(0); 
+            });
     }
+
+    const handlePlayButtonClick = (songIndex) => {
+        console.log("Play button clicked for song:", songs[songIndex]);
+        setSelectedSongIndex(songIndex);
+    };
+
+    const handleSkipButtonClick = () => {
+        if (selectedSongIndex < songs.length - 1) {
+            setSelectedSongIndex(selectedSongIndex + 1);
+        } else {
+            console.log("No more songs to skip to.");
+        }
+    };
 
     return (
         <div className="container">
@@ -72,22 +89,46 @@ const Album = () => {
                         <div className="card">
                             <div className="card-image">
                                 <figure className="image is-4by3">
-                                   <img className="album-image" src={song.album.images[0]?.url} alt={song.album.name}/>
-                                 </figure>
+                                    <img className="album-image" src={song.album.images[0]?.url} alt={song.album.name}/>
+                                </figure>
                                 <p className="title is-6">Song: {song.name}</p>
                                 <p className="subtitle is-7">Album: {song.album.name}</p>
+                                <button className="button is-small" onClick={() => handlePlayButtonClick(i)}>
+                                    Play
+                                </button>
                             </div>
                         </div>
                     </div>
                 ))}
             </div>
+        
+            {/* Used this website to be able to render an iframe with the Spotify embed code for the selected song.
+            https://developer.spotify.com/documentation/embeds/tutorials/using-the-iframe-api */}
+            {selectedSongIndex !== null && (
+                <div className="player-controls">
+                    <button className="button is-small" onClick={handleSkipButtonClick}>
+                        Skip
+                    </button>
+                </div>
+            )}
+
+            {selectedSongIndex !== null && (
+                <div className="player-container">
+                    <iframe
+                        src={`https://open.spotify.com/embed/track/${songs[selectedSongIndex].id}`}
+                        width="300"
+                        height="80"
+                        frameBorder="0"
+                        allowtransparency="true"
+                        allow="encrypted-media"
+                    ></iframe>
+                </div>
+            )}
         </div>
     );
 };
 
 export default Album;
-
-
 
 
 
