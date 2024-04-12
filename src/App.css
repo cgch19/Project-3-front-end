@@ -20,6 +20,7 @@ html{
   font-size: 55px; 
   color: whitesmoke;
   font-family: "Bungee Spice", "Roboto Mono", cursive;
+  margin: auto;
 }
 .form-container {
   background-color: rgb(172, 49, 131);
@@ -173,7 +174,7 @@ html{
 .search-container {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .album .card-content .title {
@@ -187,6 +188,7 @@ html{
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  justify-content: start;
 }
 .artist-content {
   display: flex;
@@ -325,3 +327,94 @@ html{
       margin-bottom: 10px;
   }
 }
+/* .container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  padding: 10px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.popup-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.popup-button:hover {
+  background-color: #0056b3;
+}
+
+.albums-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.album {
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.card {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card-image {
+  position: relative;
+}
+
+.album-image {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.title {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  font-style: italic;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.player-container {
+  margin-bottom: 20px;
+}
+
+.player-controls {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.player-controls button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.player-controls button:hover {
+  background-color: #0056b3;
+} */
