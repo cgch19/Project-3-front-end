@@ -15,7 +15,7 @@ const Nav = (props) => {
   }
 
   const handleSearchAlbum = () => {
-    navigate("/Album");
+    navigate("/artist");
     setPopupOpen(false);
     
   }
@@ -23,16 +23,6 @@ const Nav = (props) => {
     navigate("/favoriteartist");
     setPopupOpen(false);
   }
-
-  const loggedInLink = (
-    <span >
-      {/* <Button onClick={handleSearchAlbum} className="nav-button">Search Album🔍</Button> */}
-       {/* <Button onClick={() => { handleSearchAlbum(); setPopupOpen(false); }} className="nav-button">Search Album🔍</Button>
-      <button onClick={handleFavoriteArtist} className="nav-button">Favorite Artists</button>
-      <button onClick={handleCreateArtist} className="nav-button">Create Artist</button> */}
-      {/* <button  onClick={props.handleLogout} className="nav-button">Logout</button> */}
-    </span>
-  )
 
   return (
     <nav className="navbar">
@@ -54,14 +44,12 @@ const Nav = (props) => {
             {close => (
               <div className='modal'>
                 <div className='content'>
-                  {loggedInLink}
                 </div>
                 <div className="popup">
-                <Button onClick={() => { close(); handleSearchAlbum(); setPopupOpen(false); }} className="nav-button">Search Album🔍</Button>
+                <Button onClick={() => { close(); handleSearchAlbum(); setPopupOpen(false); }} className="nav-button">Search Artist🔍</Button>
                 <Button onClick={() => { close(); handleFavoriteArtist(); setPopupOpen(false); }} className="nav-button">Favorite Artists</Button>
                 <Button onClick={() => { close(); handleCreateArtist(); setPopupOpen(false); }} className="nav-button">Create Artist</Button>
                 <button  onClick={props.handleLogout} className="nav-button">Logout</button>
-                {/* <Button onClick={() => {close(); setPopupOpen(false);}} className="close-menu">Close Menu</Button> */}
                 </div>
               </div>
             )}
@@ -80,17 +68,3 @@ const Nav = (props) => {
 export default Nav;
 
 
-// const Nav = () => {
-//     console.log("Nav component is rendered");
-//   return (
-//     <nav className="navbar">
-//     <div>
-//       <Link to="/" className="nav-link">Home</Link>
-//     </div>
-//     <div>
-//       <Link to="/login" className="nav-link">Login</Link>
-//       <Link to="/signup" className="nav-link">Sign Up</Link>
-//     </div>
-//   </nav>
-//   )
-// } 

@@ -34,7 +34,7 @@ const Index = (props) => {
     };
 
     const loading = () => {
-        return <h1>Loading . . .</h1>;
+        return <h1>Create Your Favorite Artist</h1>;
     };
 
     return artists && artists.artists?.length > 0 ? loaded() : loading();

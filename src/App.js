@@ -6,7 +6,7 @@ import Profile from './pages/Profile';
 import CreateArtist from './pages/FavoriteArtistForm';
 import Index from './pages/Index';
 import Show from './pages/Show';
-import Album from './pages/Album';
+import Artist from './pages/ArtistTopTrack';
 import Login from './components/Login';
 import { useEffect, useState, createContext } from 'react';
 import './App.css';
@@ -19,6 +19,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("authToken"))
   const navigate = useNavigate()
   const URL = process.env.REACT_APP_URL
+  
 
 
   const handleLogin = async (user) => {
@@ -36,7 +37,7 @@ function App() {
     localStorage.setItem("authToken", data.token);
     setIsLoggedIn(true);
 
-    navigate(`/profile`);
+    navigate(`/`);
   };
 
   const handleSignUp = async (user) => {
@@ -210,7 +211,7 @@ return (
             <Route path="/createArtist" element={<CreateArtist createArtist={(artist) => createArtist(artist)} />} />
             <Route path="/favoriteArtist" element={<Index />} />  
             <Route path="/favoriteArtist/:id" element={<Show artists={artists} updateArtist={updateArtist} deleteArtist={deleteArtist} />} />
-            <Route path="/album" element={<Album />} />
+            <Route path="/artist" element={<Artist />} />
           </Routes>
         </ArtistContext.Provider>
   </div>
