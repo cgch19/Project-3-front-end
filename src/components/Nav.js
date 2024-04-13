@@ -46,7 +46,7 @@ const Nav = (props) => {
                 <div className='content'>
                 </div>
                 <div className="popup">
-                <Button onClick={() => { close(); handleSearchAlbum(); setPopupOpen(false); }} className="nav-button">Search Artist🔍</Button>
+                {/* <Button onClick={() => { close(); handleSearchAlbum(); setPopupOpen(false); }} className="nav-button">Search Artist🔍</Button> */}
                 <Button onClick={() => { close(); handleFavoriteArtist(); setPopupOpen(false); }} className="nav-button">Favorite Artists</Button>
                 <Button onClick={() => { close(); handleCreateArtist(); setPopupOpen(false); }} className="nav-button">Create Artist</Button>
                 <button  onClick={props.handleLogout} className="nav-button">Logout</button>

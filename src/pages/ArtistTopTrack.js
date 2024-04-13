@@ -55,16 +55,30 @@ const Album = () => {
         setSelectedSongIndex(songIndex);
     };
 
-    const handleSkipButtonClick = () => {
-        if (selectedSongIndex < songs.length - 1) {
-            setSelectedSongIndex(selectedSongIndex + 1);
-        } else {
-            console.log("No more songs to skip to.");
-        }
-    };
-
+    // const handleSkipButtonClick = () => {
+    //     if (selectedSongIndex < songs.length - 1) {
+    //         setSelectedSongIndex(selectedSongIndex + 1);
+    //     } else {
+    //         console.log("No more songs to skip to.");
+    //     }
+    // };
+    {/* Used this website to be able to render an iframe with the Spotify embed code for the selected song.
+            https://developer.spotify.com/documentation/embeds/tutorials/using-the-iframe-api */}
     return (
         <div className="container">
+            {selectedSongIndex !== null && (
+                <div className="player-container">
+                    <iframe
+                        src={`https://open.spotify.com/embed/track/${songs[selectedSongIndex].id}`}
+                        width="300"
+                        height="80"
+                        frameBorder="0"
+                        allowtransparency="true"
+                        allow="encrypted-media"
+                    ></iframe>
+                </div>
+            )}
+
             <div className="search-container">
                 <div className="control is-expanded">
                     <input className="input search-input" type="text" placeholder="Search Artist / Top Tracks"
@@ -102,28 +116,14 @@ const Album = () => {
                 ))}
             </div>
         
-            {/* Used this website to be able to render an iframe with the Spotify embed code for the selected song.
-            https://developer.spotify.com/documentation/embeds/tutorials/using-the-iframe-api */}
-            {selectedSongIndex !== null && (
-                <div className="player-controls">
-                    <button className="button is-small" onClick={handleSkipButtonClick}>
-                        Skip
-                    </button>
-                </div>
-            )}
+            {/* {selectedSongIndex !== null && (
+                // <div className="player-controls">
+                //     <button className="button is-small" onClick={handleSkipButtonClick}>
+                //         Skip
+                //     </button>
+                // </div>
+            )} */}
 
-            {selectedSongIndex !== null && (
-                <div className="player-container">
-                    <iframe
-                        src={`https://open.spotify.com/embed/track/${songs[selectedSongIndex].id}`}
-                        width="300"
-                        height="80"
-                        frameBorder="0"
-                        allowtransparency="true"
-                        allow="encrypted-media"
-                    ></iframe>
-                </div>
-            )}
         </div>
     );
 };
