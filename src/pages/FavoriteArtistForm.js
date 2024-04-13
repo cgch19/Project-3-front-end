@@ -95,8 +95,8 @@ return (
                         />
                     </Field>
 
-                    <Button onClick={handleCancel} className="popup-button" >Cancel</Button>
                     <Button className="popup-button" type="submit">Submit</Button>
+                    <Button onClick={handleCancel} className="popup-button" >Cancel</Button>
                 </form>
             </Box>
         </section>
