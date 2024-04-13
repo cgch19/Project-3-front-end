@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Card, Box, Form, Button} from "react-bulma-components";
 import { ArtistContext } from "../App";   
 
+// Ref. from Unit3 React
 const Show = (props) => {
     const navigate = useNavigate()
     const params = useParams()
