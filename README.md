@@ -31,7 +31,7 @@ Welcome to MuzicBox an app where you can create your list of favorite artists, s
 
  Fork and clone this repo 
 - npm i in your terminal, to install all dependencies.
-- Make .env file and set initial REACT_APP_URL=http://localhost:4000/api/
+- Create .env file and set initial REACT_APP_URL=http://localhost:4000/api/
 - [Backend GitHub link, click here](https://github.com/Sinai161/project-3-backend)
 
 ### Sign up and Log in to start creating artist and listening to music !
