@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Box, Form, Button } from 'react-bulma-components';
 import { useNavigate } from "react-router-dom";
 
+// Ref. from Unit 3 React
 const FavoriteArtistForm = (props) => {
     const newArtistForm = {
         song: "",
@@ -94,8 +95,8 @@ return (
                         />
                     </Field>
 
-                    <Button onClick={handleCancel} className="popup-button" >Cancel</Button>
                     <Button className="popup-button" type="submit">Submit</Button>
+                    <Button onClick={handleCancel} className="popup-button" >Cancel</Button>
                 </form>
             </Box>
         </section>

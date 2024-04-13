@@ -1,4 +1,4 @@
-import {  Route, Routes, useNavigate } from 'react-router-dom';
+import {  Route, Routes, useNavigate, Navigate, useLocation } from 'react-router-dom';
 import Nav from './components/Nav';
 import Signup from './components/Signup';
 import Homepage from './pages/Homepage';
@@ -8,7 +8,7 @@ import Index from './pages/Index';
 import Show from './pages/Show';
 import Artist from './pages/ArtistTopTrack';
 import Login from './components/Login';
-import { useEffect, useState, createContext } from 'react';
+import { useEffect, useState, createContext, Children } from 'react';
 import './App.css';
 
 export const ArtistContext = createContext(null);
@@ -157,7 +157,6 @@ const updateArtist = async (artist, id) => {
       return;
   }
   
-  
   try {
       const response = await fetch(`${URL}favoriteArtist/${id}`, {
           method: "PUT",
@@ -199,19 +198,32 @@ const deleteArtist = async (id) => {
     getArtist();
 }
 
+// Making Routes are available only when user is logged in.
+// Ref dev.to Reactjs Protected Routes
+const ProtectedRoute = ({ children, isLoggedIn }) => {
+  const location = useLocation()
+
+  if(!isLoggedIn) {
+    console.log('You need to log in first')
+
+    return <Navigate to={'/login'} replace />
+  }
+  return children;
+}
+
 return (
   <div className="App">
         <ArtistContext.Provider value={{ artists, createArtist, updateArtist, deleteArtist }}>
           <Nav isLoggedIn={isLoggedIn} handleLogout={handleLogout}/>
           <Routes >
-            <Route path="/" element={<Homepage />} />
+            <Route path="/" element={ <ProtectedRoute isLoggedIn={isLoggedIn}> <Homepage /> </ProtectedRoute> } />
             <Route path="/login" element={<Login handleLogin={handleLogin} />} />
             <Route path="/signup" element={<Signup handleSignUp={handleSignUp} />} />
             <Route path="/profile/:id" element={<Profile fetchUser={fetchUser} user={user}/>}/>
-            <Route path="/createArtist" element={<CreateArtist createArtist={(artist) => createArtist(artist)} />} />
-            <Route path="/favoriteArtist" element={<Index />} />  
+            <Route path="/createArtist" element={ <ProtectedRoute isLoggedIn={isLoggedIn}> <CreateArtist createArtist={(artist) => createArtist(artist)} />  </ProtectedRoute> } />
+            <Route path="/favoriteArtist" element={ <ProtectedRoute isLoggedIn={isLoggedIn}> <Index /> </ProtectedRoute> } />  
             <Route path="/favoriteArtist/:id" element={<Show artists={artists} updateArtist={updateArtist} deleteArtist={deleteArtist} />} />
-            <Route path="/artist" element={<Artist />} />
+            <Route path="/artist" element={ <ProtectedRoute isLoggedIn={isLoggedIn}> <Artist /> </ProtectedRoute> } />
           </Routes>
         </ArtistContext.Provider>
   </div>
