@@ -85,9 +85,9 @@ const Show = (props) => {
                             <Input placeholder="Release Date" name="releaseDate" value={form.releaseDate} onChange={handleChange} />
                         </Field>
 
-                        <Button onClick={handleCancel} className="popup-button" >Cancel</Button>
-
                         <Button className="popup-button" type="submit" >Update</Button>
+
+                        <Button onClick={handleCancel} className="popup-button" >Cancel</Button>
 
                     </form>
                 </Box>
